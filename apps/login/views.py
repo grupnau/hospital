@@ -19,7 +19,7 @@ def register(request):
         return redirect('/')
     request.session['user_id'] = result.id
     messages.success(request, "Successfully registered!")
-    return HttpResponseRedirect(reverse("quotes_app:index"))
+    return HttpResponseRedirect(reverse("notes_app:index"))
 
 def login(request):
     result = User.objects.validate_login(request.POST)
@@ -29,7 +29,7 @@ def login(request):
         return redirect('/')
     request.session['user_id'] = result.id
     messages.success(request, "Successfully logged in!")
-    return HttpResponseRedirect(reverse("quotes_app:index"))
+    return HttpResponseRedirect(reverse("notes_app:index"))
 
 def logout(request):
     for key in request.session.keys():

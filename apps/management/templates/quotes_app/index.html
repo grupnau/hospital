@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Quote Page</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% load staticfiles %}
+        <link href="{% static 'quotes_app/style.css' %}" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <div class="messages">
+                {% if messages %}
+                    {% for message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <a href="{% url 'login:logout' %}">Logout</a>
+            <h2>Welcome, {{ user.first_name }}!</h2>
+        </header>
+        <div class="wrap_left">
+            <h3 class="border_break">Quotable Quotes</h3>
+            <div class="wrapper_quotes" id="wrapper_quotes">
+                {% for quote in quotes %}
+                    {% if quote.users.all %}
+
+                                <div class="quotes">
+                                    <p class="quote_content">{{ quote.content }}</p>
+                                    <p class="quoted_by">- {{ quote.quoted_by }}</p>
+                                    <div class="links">
+                                        <p>Posted by <a href="/user/{{quote.posted_by.id}}">{{ quote.posted_by.first_name}}</a> on {{ quote.created_at }}</p>
+                                    </div>
+                                    <button id="add_to_fav">
+                                        <a href="/quotes/add_to_list/{{ quote.id }}">Add to My List</a>
+                                    </button>
+                                </div>
+
+                    {% else %}
+                        <div class="quotes">
+                            <p class="quote_content">{{ quote.content }}</p>
+                            <p class="quoted_by">- {{ quote.quoted_by }}</p>
+                            <div class="links">
+                                <p>Posted by <a href="/user/{{quote.posted_by.id}}">{{ quote.posted_by.first_name}}</a> on {{ quote.created_at }}</p>
+                            </div>
+                            <button>
+                                <a href="/quotes/add_to_list/{{ quote.id }}">Add to My List</a>
+                            </button>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        <div class="wrap_right">
+            <div class="faves">
+                <h3 class="border_break">Favorites</h3>
+                <div class="faves_scroll">
+                    {% for quote in faves %}
+                        {% if quote.users.all %}
+                            {% for fav in quote.users.all %}
+                                {% if fav.email == user.email %}
+                                    <div class="quotes">
+                                        <p class="quote_content">{{ quote.content }}</p>
+                                        <p class="quoted_by">- {{ quote.quoted_by }}</p>
+                                        <div class="links">
+                                            <p>Posted by <a href="/user/{{quote.posted_by.id}}">{{ quote.posted_by.first_name}}</a> on {{ quote.created_at }}</p>
+                                        </div>
+                                        <button>
+                                            <a href="/quotes/rm_fm_list/{{ quote.id }}">Remove Quote</a>
+                                        </button>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <form class="post_quote" id="post_quote" action="/quotes/create" method='post'>{% csrf_token %}
+                <h3 class="border_break">Post Quote</h3>
+                <p><label for="quoted_by">Quoted By: <input class="quote_by_input" type="text" name="quoted_by" value=""></label></p>
+                <p class="no_margin"><label for="content">Quote: <textarea class="quote_by_input" name="content" rows="4" cols="40"></textarea></label></p>
+                <p class="button_margin">
+                    <input type="submit" name="submit" value="Post">
+                </p>
+            </form>
+        </div>
+    </body>
+</html>
