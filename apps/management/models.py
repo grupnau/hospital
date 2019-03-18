@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from ..login.models import User
+from login.models import User
 from django.db import models
+
 
 class QuoteManager(models.Manager):
     def validate_quote(self, post_data):
@@ -21,10 +22,11 @@ class QuoteManager(models.Manager):
     def create_quote(self, clean_data, user_id):
 
         return self.create(
-            quoted_by = clean_data['quoted_by'],
-            content = clean_data['content'],
-            posted_by = User.objects.get(id=user_id)
+            quoted_by=clean_data['quoted_by'],
+            content=clean_data['content'],
+            posted_by=User.objects.get(id=user_id)
         )
+
 
 class Quote(models.Model):
     quoted_by = models.CharField(max_length=255)
