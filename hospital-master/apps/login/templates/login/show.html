@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load staticfiles %}
+    <link href="{% static 'login/show.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    <p class="right_align"><a href="/notes/">Home</a> | <a href="/logout">Logout</a></p>
+    <h1><strong>Posts by </strong>{{user.first_name}}</h1>
+    {% if note_list %}
+    <h2><strong>Count: </strong>{{ count }}</h2>
+    <hr>
+    <h4>Notes</h4>
+    {% for note in note_list %}
+    <h4><span>{{ note.noted_by }}</span> {{ note.content }}</h4>
+    {% endfor %}
+    {% else %}
+    <h2><strong>Count: </strong>0</h2>
+    <hr>
+    <h4>Notes</h4>
+    {% endif %}
+
+</body>
+
+</html>
