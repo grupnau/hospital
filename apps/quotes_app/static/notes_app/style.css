@@ -1,0 +1,196 @@
+body{
+    width: 1000px;
+    height:800px;
+    margin:auto;
+    padding: 20px;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+div.wrap_left{
+    border: 2px solid black;
+    display:inline-block;
+    width: 440px;
+    height: 600px;
+    padding: 0px 10px 10px 10px;
+    vertical-align: top;
+    font-size: 12px;
+}
+div.wrap_right{
+    margin-left: 20px;
+    display:inline-block;
+    width: 420px;
+    height: 610px;
+    vertical-align: top;
+    font-size: 12px;
+}
+p.home_logout{
+    display:block;
+    text-align: right;
+}
+.header_quotes{
+    text-decoration: underline;
+    font-size: 1.2em;
+    margin-left: 15px;
+    margin-bottom: 0.67em;
+    margin-top: 0px;
+}
+.border_break{
+    vertical-align: top;
+    display:inline-block;
+    margin-top: -15px;
+    margin-left: 30px;
+    background-color: white;
+    padding: 0px 5px;
+    font-size: 18px;
+}
+p.quote_content{
+    font-size: 16px;
+}
+p.quoted_by{
+    font-style: italic;
+    font-size: 14px;
+    text-align: left;
+}
+div.wrapper_quotes{
+    display:inline-block;
+    width: 450px;
+    height: 580px;
+    vertical-align: top;
+    font-size: 12px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+div.faves_scroll{
+    display:inline-block;
+    width: 450px;
+    height: 350px;
+    vertical-align: top;
+    font-size: 12px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+div.quotes{
+    border: 2px solid silver;
+    display:inline-block;
+    width: 400px;
+    padding: 0px 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    vertical-align: top;
+    font-size: 12px;
+}
+div.links{
+    width: 270px;
+}
+.faves{
+    border: 2px solid black;
+    display:inline-block;
+    width:440px;
+    display:inline-block;
+    padding: 0px 10px 10px 10px;
+    vertical-align: top;
+    font-size: 12px;
+    margin-bottom: 20px;
+    min-height: 350px;
+}
+.post_quote{
+    border: 2px solid black;
+    border-radius: 20px;
+    display:inline-block;
+    width:420px;
+    display:inline-block;
+    padding: 0px 10px;
+    font-size: 12px;
+    height:200px;
+}
+.quote_by_input{
+    width: 300px;
+}
+textarea{
+    margin-left: 30px;
+    overflow: hidden;
+}
+form p{
+    margin-bottom: 10px;
+}
+div.reviews p{
+    margin-left: 10px;
+}
+div{
+    width:180px;
+    display:inline-block;
+    margin:auto;
+}
+
+.error{
+    font-style: italic;
+    font-weight: bold;
+}
+.messages{
+    min-width:850px;
+    min-height: 30px;
+    font-style: italic;
+    font-weight: bold;
+}
+.names{
+    vertical-align: top;
+    max-height: 191px;
+}
+.comment{
+    margin:0px;
+}
+.button{
+    text-align: right;
+    border: 2px solid black;
+    box-shadow: 1px 1px 2px solid black;
+}
+.login_button{
+    text-align: center;
+    margin-left: 200px;
+}
+.no_margin{
+    margin:0px;
+}
+.button_margin{
+    margin:5px 0px;
+    text-align: right;
+}
+input[type='submit']{
+    margin-right: 40px;
+}
+td{
+    width: 180px;
+}
+.link_p{
+    display:inline-block;
+    width:145px;
+}
+.link_p_s{
+    display:inline-block;
+    width:100px;
+}
+td input{
+    margin: 5px;
+    width:166.22px;
+}
+.success{
+    color:green;
+}
+.quotes>span{
+    display:none;
+}
+button{
+    width: 110px;
+}
+button a{
+    text-align: center;
+    text-decoration: none;
+    color: black;
+}
+label{
+    vertical-align: top;
+    font-size: 14px;
+}
+label.small_text{
+    font-size: 12px;
+    margin-left: 20px;
+}

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Note Page</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {% load staticfiles %}
+    <link href="{% static 'notes_app/style.css' %}" rel="stylesheet" />
+  </head>
+  <body>
+    <header>
+      <div class="messages">
+        {% if messages %} {% for message in messages %}
+        <p>{{ message }}</p>
+        {% endfor %} {% endif %}
+      </div>
+      <a href="{% url 'login:logout' %}">Logout</a>
+      <h2>Welcome, {{ patient.first_name }}!</h2>
+    </header>
+    <div class="wrap_left">
+      <h3 class="border_break">Quotable Notes</h3>
+      <div class="wrapper_notes" id="wrapper_notes">
+        {% for note in notes %} {% if note.patients.all %}
+
+        <div class="notes">
+          <p class="note_content">{{ note.content }}</p>
+          <p class="noted_by">- {{ note.noted_by }}</p>
+          <div class="links">
+            <p>
+              Posted by
+              <a href="/patient/{{ note.posted_by.id }}">{{
+                note.posted_by.first_name
+              }}</a>
+              on {{ note.created_at }}
+            </p>
+          </div>
+          <button id="add_to_fav">
+            <a href="/notes/add_to_list/{{ note.id }}">Add to My List</a>
+          </button>
+        </div>
+
+        {% else %}
+        <div class="notes">
+          <p class="note_content">{{ note.content }}</p>
+          <p class="noted_by">- {{ note.noted_by }}</p>
+          <div class="links">
+            <p>
+              Posted by
+              <a href="/patient/{{ note.posted_by.id }}">{{
+                note.posted_by.first_name
+              }}</a>
+              on {{ note.created_at }}
+            </p>
+          </div>
+          <button>
+            <a href="/notes/add_to_list/{{ note.id }}">Add to My List</a>
+          </button>
+        </div>
+        {% endif %} {% endfor %}
+      </div>
+    </div>
+    <div class="wrap_right">
+      <div class="faves">
+        <h3 class="border_break">Favorites</h3>
+        <div class="faves_scroll">
+          {% for note in faves %} {% if note.patients.all %} {% for fav in
+          note.patients.all %} {% if fav.email == patient.email %}
+          <div class="notes">
+            <p class="note_content">{{ note.content }}</p>
+            <p class="noted_by">- {{ note.noted_by }}</p>
+            <div class="links">
+              <p>
+                Posted by
+                <a href="/patient/{{ note.posted_by.id }}">{{
+                  note.posted_by.first_name
+                }}</a>
+                on {{ note.created_at }}
+              </p>
+            </div>
+            <button>
+              <a href="/notes/rm_fm_list/{{ note.id }}">Remove Note</a>
+            </button>
+          </div>
+          {% endif %} {% endfor %} {% endif %} {% endfor %}
+        </div>
+      </div>
+      <form
+        class="post_note"
+        id="post_note"
+        action="/notes/create"
+        method="post"
+      >
+        {% csrf_token %}
+        <h3 class="border_break">Post Note</h3>
+        <p>
+          <label for="noted_by"
+            >Noted By:
+            <input class="note_by_input" type="text" name="noted_by" value=""
+          /></label>
+        </p>
+        <p class="no_margin">
+          <label for="content"
+            >Note:
+            <textarea
+              class="note_by_input"
+              name="content"
+              rows="4"
+              cols="40"
+            ></textarea
+          ></label>
+        </p>
+        <p class="button_margin">
+          <input type="submit" name="submit" value="Post" />
+        </p>
+      </form>
+    </div>
+  </body>
+</html>

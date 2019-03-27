@@ -12,7 +12,7 @@ class NoteManager(models.Manager):
         errors = []
 
         if len(post_data['noted_by']) < 3:
-            errors.append('Name of noter must be at least 3 characters long')
+            errors.append('Name of doctor must be at least 3 characters long')
         if len(post_data['content']) < 10:
             errors.append('Note must be at least 10 characters long')
         if Note.objects.filter(content=post_data['content']):

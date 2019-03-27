@@ -6,5 +6,5 @@ urlpatterns = [
     url(r'^login$', views.login),
     url(r'^logout$', views.logout, name='logout'),
     url(r'^success$', views.success),
-    url(r'^user/(?P<user_id>\d+)$', views.show)
+    url(r'^patient/(?P<patient_id>\d+)$', views.show)
 ]

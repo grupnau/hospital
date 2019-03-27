@@ -64,6 +64,7 @@ class UserManager(models.Manager):
     updated_at = models.DateTimeField(auto_now=True)
     objects = UserManager()'''
 
+
 class Doctor(models.Model):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
@@ -75,7 +76,11 @@ class Doctor(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = UserManager()
-    
+
+    def __str__(self):
+        return self.email
+
+
 class Patient(models.Model):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
@@ -88,6 +93,10 @@ class Patient(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     objects = UserManager()
 
+    def __str__(self):
+        return self.email
+
+
 class Receptionist(models.Model):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
@@ -97,6 +106,6 @@ class Receptionist(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = UserManager()
-    
+
     def __str__(self):
         return self.email
