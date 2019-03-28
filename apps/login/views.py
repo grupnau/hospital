@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render, redirect, HttpResponseRedirect, reverse
 from .models import Patient
-# from ..notes_app.models import Note
+from management.models import Note
 from django.contrib import messages
 
 
@@ -51,18 +51,19 @@ def success(request):
     }
     return render(request, 'login/success.html', context)
 
-# def show(request, patient_id):
-#     this_patient = Patient.objects.get(id=patient_id)
-#     print this_patient
-#     notes = Note.objects.filter(posted_by = this_patient)
-#     print notes
-#     note_list = []
-#     for note in notes:
-#         note_list.append(Note.objects.get(id=note.id))
-#     context = {
-#         'patient':this_patient,
-#         'note_list': note_list,
-#         'count': len(note_list)
-#     }
 
-#     return render(request, 'login/show.html', context)
+def show(request, patient_id):
+    this_patient = Patient.objects.get(id=patient_id)
+    print(this_patient)
+    notes = Note.objects.filter(posted_by=this_patient)
+    print(notes)
+    note_list = []
+    for note in notes:
+        note_list.append(Note.objects.get(id=note.id))
+    context = {
+        'patient': this_patient,
+        'note_list': note_list,
+        'count': len(note_list)
+    }
+
+    return render(request, 'login/show.html', context)

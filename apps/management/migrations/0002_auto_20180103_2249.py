@@ -8,13 +8,14 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('quotes_app', '0001_initial'),
+        ('notes_app', '0001_initial'),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='quote',
+            model_name='note',
             name='users',
-            field=models.ManyToManyField(related_name='faves', to='login.User'),
+            field=models.ManyToManyField(
+                related_name='faves', to='login.User'),
         ),
     ]

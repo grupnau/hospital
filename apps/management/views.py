@@ -21,7 +21,7 @@ def index(request):
         'notes': all_notes.order_by('-created_at'),
         'faves': Note.objects.order_by('-created_at')
     }
-    return render(request, 'notes_app/index.html', context)
+    return render(request, 'management/index.html', context)
 
 
 def create(request):
@@ -52,6 +52,6 @@ def remove(request, note_id):
     patient_removing = Patient.objects.get(id=request.session['patient_id'])
     note_to_remove = Note.objects.get(id=note_id)
     note_to_remove.patients.remove(patient_removing)
-    print note_to_remove.patients.all()
+    print(note_to_remove.patients.all())
 
     return redirect('/notes/')

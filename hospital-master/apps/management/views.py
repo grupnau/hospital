@@ -19,7 +19,7 @@ def index(request):
         'quotes': all_quotes.order_by('-created_at'),
         'faves': Quote.objects.order_by('-created_at')
     }
-    return render(request, 'quotes_app/index.html', context)
+    return render(request, 'notes_app/index.html', context)
 
 def create(request):
     # validate requests

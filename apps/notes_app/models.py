@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from login.models import Patient
+from .models import Patient
 from django.db import models
 
 
@@ -31,7 +31,8 @@ class NoteManager(models.Manager):
 class Note(models.Model):
     noted_by = models.CharField(max_length=255)
     content = models.TextField()
-    posted_by = models.ForeignKey(Patient, related_name="notes")
+    posted_by = models.ForeignKey(
+        Patient, related_name="notes", on_delete='models.PROTECT')
     users = models.ManyToManyField(Patient, related_name="faves")
     created_at = models.DateTimeField(auto_now_add=True)
     objects = NoteManager()

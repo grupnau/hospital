@@ -18,12 +18,15 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Quote',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('quoted_by', models.CharField(max_length=255)),
+                ('id', models.AutoField(auto_created=True,
+                                        primary_key=True, serialize=False, verbose_name='ID')),
+                ('noted_by', models.CharField(max_length=255)),
                 ('content', models.TextField()),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('posted_by', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='quotes', to='login.User')),
-                ('users', models.ManyToManyField(related_name='users', to='login.User')),
+                ('posted_by', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE, related_name='notes', to='login.User')),
+                ('users', models.ManyToManyField(
+                    related_name='users', to='login.User')),
             ],
         ),
     ]
