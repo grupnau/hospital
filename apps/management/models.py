@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from apps.login.models import Patient
+from login.models import Patient
 from django.db import models
 
 
