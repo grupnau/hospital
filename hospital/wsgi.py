@@ -10,7 +10,6 @@ import os
 import sys
 
 from django.core.wsgi import get_wsgi_application
-sys.path = '/Users/sammyjamal/repos/hospital' + sys.path
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'hospital.settings')
 
