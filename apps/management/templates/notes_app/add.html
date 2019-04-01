@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <title>Add Book and Review</title>
+       {% load staticfiles %}
+       <link rel="stylesheet" href="{% static 'review_books/style.css' %}">
+    </head>
+    <body>
+        <p class="home_logout">
+            <a href="/books">Home</a> |
+            <a href="/logout">Logout</a>
+        </p>
+        <h1>ADD A REVIEW</h1>
+        <form class="left" action='/books/create' method='post'>{% csrf_token %}
+            <p><label for="book_title">Book Title: <input type='text' name='title'></label></p>
+            <p><label for="author">Author:</label></p>
+            <p>
+                <label class="small_text">Choose from the list: </label>
+                <select class="" name="author">
+                    {% for author in authors %}
+                        <option value="{{ author.id }}">{{ author.name }}</option>
+                    {% endfor %}
+                </select>
+            </p>
+            <p>
+                <label class="small_text" for="new_author">Or add a new author: <input type="text" name="new_author"></label>
+            </p>
+            <p>
+                <label for="review">Review: <textarea name="review" rows="4" cols="40"></textarea></p></label>
+            </p>
+            <label for="rating"> Rating:
+                <select class="" name="rating">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </label>
+
+            <p class="login_button"><input type='submit' value='Add Book and Review'></p>
+        </form>
+    </body>
+</html>

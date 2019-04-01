@@ -54,7 +54,7 @@ class UserManager(models.Manager):
         return user
 
 
-'''class User(models.Model):
+class User(models.Model):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     email = models.CharField(max_length=255)
@@ -62,50 +62,26 @@ class UserManager(models.Manager):
     dob = models.DateField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    objects = UserManager()'''
+
+    class Meta:
+        abstract = True
 
 
-class Doctor(models.Model):
-    first_name = models.CharField(max_length=255)
-    last_name = models.CharField(max_length=255)
-    email = models.CharField(max_length=255)
-    password = models.CharField(max_length=255)
-    dob = models.DateField()
-    prof_experience = models.IntegerField(default='0')
-    booked_appointment = models.DateField()
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+class Doctor(User):
+    years_experience = models.IntegerField(default=0)
+    specialty = models.CharField(max_length=255)
     objects = UserManager()
 
     def __str__(self):
-        return self.email
+        return self.email, self.specialty
 
 
-class Patient(models.Model):
-    first_name = models.CharField(max_length=255)
-    last_name = models.CharField(max_length=255)
-    email = models.CharField(max_length=255)
-    password = models.CharField(max_length=255)
-    dob = models.DateField()
-    past_history = models.CharField(max_length=255)
-    appointment_at = models.DateField()
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+class Patient(User):
+    main_condition = models.CharField(max_length=255)
+    age = models.IntegerField(default=0)
+    patient_id = models.IntegerField(default=0)
     objects = UserManager()
-
-    def __str__(self):
-        return self.email
 
 
 class Receptionist(models.Model):
-    first_name = models.CharField(max_length=255)
-    last_name = models.CharField(max_length=255)
-    email = models.CharField(max_length=255)
-    password = models.CharField(max_length=255)
-    dob = models.DateField()
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    objects = UserManager()
-
-    def __str__(self):
-        return self.email
+    department = models.CharField(max_length=255)
