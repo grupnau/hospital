@@ -12,16 +12,14 @@ def index(request):
 
 
 def register(request):
-    print(request.POST)
     result = Patient.objects.validate_registration(request.POST)
-    print(result)
     if type(result) == list:
         for err in result:
             messages.error(request, err)
         return redirect('/')
     request.session['patient_id'] = result.id
     messages.success(request, "Successfully registered!")
-    return HttpResponseRedirect(reverse("notes_app:index"))
+    return HttpResponseRedirect(reverse("management:index"))
 
 
 def login(request):
@@ -32,11 +30,11 @@ def login(request):
         return redirect('/')
     request.session['patient_id'] = result.id
     messages.success(request, "Successfully logged in!")
-    return HttpResponseRedirect(reverse("notes_app:index"))
+    return HttpResponseRedirect(reverse("management:index"))
 
 
 def logout(request):
-    for key in request.session.keys():
+    for key in list(request.session.keys()):
         del request.session[key]
     return redirect('/')
 

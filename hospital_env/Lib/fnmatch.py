@@ -74,7 +74,7 @@ def fnmatchcase(name, pat):
 def translate(pat):
     """Translate a shell PATTERN to a regular expression.
 
-    There is no way to quote meta-characters.
+    There is no way to note meta-characters.
     """
 
     i, n = 0, len(pat)

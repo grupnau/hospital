@@ -469,8 +469,8 @@ aliases = {
 
     # quopri_codec codec
     'quopri'             : 'quopri_codec',
-    'quoted_printable'   : 'quopri_codec',
-    'quotedprintable'    : 'quopri_codec',
+    'noted_printable'   : 'quopri_codec',
+    'notedprintable'    : 'quopri_codec',
 
     # rot_13 codec
     'rot13'              : 'rot_13',

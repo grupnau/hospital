@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     {% load staticfiles %}
-    <link href="{% static 'notes_app/style.css' %}" rel="stylesheet" />
+    <link href="{% static 'management/style.css' %}" rel="stylesheet" />
   </head>
   <body>
     <header>
@@ -81,7 +81,7 @@
               <a href="/notes/rm_fm_list/{{ note.id }}">Remove Note</a>
             </button>
           </div>
-          {% endif %} {% endfor %} {% endif %} {% endfor %}
+          {% endif %}{% endif %} {% endfor %}
         </div>
       </div>
       <form

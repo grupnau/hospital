@@ -97,7 +97,7 @@ proc animateLabelImage {w imageData interval} {
     # Make sure that the animation stops and is cleaned up after itself
     # when the animated label is destroyed.  Note that at this point we
     # cannot manipulate the widget itself, as that has already died.
-    # Also note that this script is in double-quotes; this is always OK
+    # Also note that this script is in double-notes; this is always OK
     # because image names are chosen automatically to be simple words.
     bind $w <Destroy> "
 	after cancel \$animationCallbacks(%W)

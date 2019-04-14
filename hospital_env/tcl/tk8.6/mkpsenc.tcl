@@ -39,12 +39,12 @@ namespace eval ::tk {
     array set psglyphs {
 	0020 space
 	0021 exclam
-	0022 quotedbl
+	0022 notedbl
 	0023 numbersign
 	0024 dollar
 	0025 percent
 	0026 ampersand
-	0027 quotesingle
+	0027 notesingle
 	0028 parenleft
 	0029 parenright
 	002A asterisk
@@ -703,13 +703,13 @@ namespace eval ::tk {
 	2014 emdash
 	2015 afii00208
 	2017 underscoredbl
-	2018 quoteleft
-	2019 quoteright
-	201A quotesinglbase
-	201B quotereversed
-	201C quotedblleft
-	201D quotedblright
-	201E quotedblbase
+	2018 noteleft
+	2019 noteright
+	201A notesinglbase
+	201B notereversed
+	201C notedblleft
+	201D notedblright
+	201E notedblbase
 	2020 dagger
 	2021 daggerdbl
 	2022 bullet

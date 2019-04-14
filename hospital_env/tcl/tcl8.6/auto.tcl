@@ -516,7 +516,7 @@ proc auto_mkindex_parser::fullname {name} {
 # auto_mkindex_parser::indexEntry --
 #
 # Used by commands like "proc" within the auto_mkindex parser to add a
-# correctly-quoted entry to the index. This is shared code so it is done
+# correctly-noted entry to the index. This is shared code so it is done
 # *right*, in one place.
 #
 # Arguments:
@@ -528,7 +528,7 @@ proc auto_mkindex_parser::indexEntry {name} {
 
     # We convert all metacharacters to their backslashed form, and pre-split
     # the file name that we know about (which will be a proper list, and so
-    # correctly quoted).
+    # correctly noted).
 
     set name [string range [list \}[fullname $name]] 2 end]
     set filenameParts [file split $scriptFile]

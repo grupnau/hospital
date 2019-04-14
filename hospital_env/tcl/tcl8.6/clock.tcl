@@ -2365,10 +2365,10 @@ proc ::tcl::clock::LoadWindowsDateTimeFormats { locale } {
 	registry get "HKEY_CURRENT_USER\\Control Panel\\International" \
 	    sShortDate
     } string] } {
-	set quote {}
+	set note {}
 	set datefmt {}
-	foreach { unquoted quoted } [split $string '] {
-	    append datefmt $quote [string map {
+	foreach { unnoted noted } [split $string '] {
+	    append datefmt $note [string map {
 		dddd %A
 		ddd  %a
 		dd   %d
@@ -2381,11 +2381,11 @@ proc ::tcl::clock::LoadWindowsDateTimeFormats { locale } {
 		yy   %y
                 y    %y
                 gg   {}
-	    } $unquoted]
-	    if { $quoted eq {} } {
-		set quote '
+	    } $unnoted]
+	    if { $noted eq {} } {
+		set note '
 	    } else {
-		set quote $quoted
+		set note $noted
 	    }
 	}
 	::msgcat::mcset $locale DATE_FORMAT $datefmt
@@ -2395,10 +2395,10 @@ proc ::tcl::clock::LoadWindowsDateTimeFormats { locale } {
 	registry get "HKEY_CURRENT_USER\\Control Panel\\International" \
 	    sLongDate
     } string] } {
-	set quote {}
+	set note {}
 	set ldatefmt {}
-	foreach { unquoted quoted } [split $string '] {
-	    append ldatefmt $quote [string map {
+	foreach { unnoted noted } [split $string '] {
+	    append ldatefmt $note [string map {
 		dddd %A
 		ddd  %a
 		dd   %d
@@ -2411,11 +2411,11 @@ proc ::tcl::clock::LoadWindowsDateTimeFormats { locale } {
 		yy   %y
                 y    %y
                 gg   {}
-	    } $unquoted]
-	    if { $quoted eq {} } {
-		set quote '
+	    } $unnoted]
+	    if { $noted eq {} } {
+		set note '
 	    } else {
-		set quote $quoted
+		set note $noted
 	    }
 	}
 	::msgcat::mcset $locale LOCALE_DATE_FORMAT $ldatefmt
@@ -2425,10 +2425,10 @@ proc ::tcl::clock::LoadWindowsDateTimeFormats { locale } {
 	registry get "HKEY_CURRENT_USER\\Control Panel\\International" \
 	    sTimeFormat
     } string] } {
-	set quote {}
+	set note {}
 	set timefmt {}
-	foreach { unquoted quoted } [split $string '] {
-	    append timefmt $quote [string map {
+	foreach { unnoted noted } [split $string '] {
+	    append timefmt $note [string map {
 		HH    %H
 		H     %k
 		hh    %I
@@ -2439,11 +2439,11 @@ proc ::tcl::clock::LoadWindowsDateTimeFormats { locale } {
 		s     %S
 		tt    %p
 		t     %p
-	    } $unquoted]
-	    if { $quoted eq {} } {
-		set quote '
+	    } $unnoted]
+	    if { $noted eq {} } {
+		set note '
 	    } else {
-		set quote $quoted
+		set note $noted
 	    }
 	}
 	::msgcat::mcset $locale TIME_FORMAT $timefmt

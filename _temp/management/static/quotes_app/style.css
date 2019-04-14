@@ -26,7 +26,7 @@ p.home_logout{
     display:block;
     text-align: right;
 }
-.header_quotes{
+.header_notes{
     text-decoration: underline;
     font-size: 1.2em;
     margin-left: 15px;
@@ -42,15 +42,15 @@ p.home_logout{
     padding: 0px 5px;
     font-size: 18px;
 }
-p.quote_content{
+p.note_content{
     font-size: 16px;
 }
-p.quoted_by{
+p.noted_by{
     font-style: italic;
     font-size: 14px;
     text-align: left;
 }
-div.wrapper_quotes{
+div.wrapper_notes{
     display:inline-block;
     width: 450px;
     height: 580px;
@@ -68,7 +68,7 @@ div.faves_scroll{
     overflow-y: auto;
     overflow-x: hidden;
 }
-div.quotes{
+div.notes{
     border: 2px solid silver;
     display:inline-block;
     width: 400px;
@@ -92,7 +92,7 @@ div.links{
     margin-bottom: 20px;
     min-height: 350px;
 }
-.post_quote{
+.post_note{
     border: 2px solid black;
     border-radius: 20px;
     display:inline-block;
@@ -102,7 +102,7 @@ div.links{
     font-size: 12px;
     height:200px;
 }
-.quote_by_input{
+.note_by_input{
     width: 300px;
 }
 textarea{

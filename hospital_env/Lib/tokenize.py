@@ -192,9 +192,9 @@ ContStr = group(StringPrefix + r"'[^\n'\\]*(?:\\.[^\n'\\]*)*" +
 PseudoExtras = group(r'\\\r?\n|\Z', Comment, Triple)
 PseudoToken = Whitespace + group(PseudoExtras, Number, Funny, ContStr, Name)
 
-# For a given string prefix plus quotes, endpats maps it to a regex
+# For a given string prefix plus notes, endpats maps it to a regex
 #  to match the remainder of that string. _prefix can be empty, for
-#  a normal single or triple quoted string (with no prefix).
+#  a normal single or triple noted string (with no prefix).
 endpats = {}
 for _prefix in _all_string_prefixes():
     endpats[_prefix + "'"] = Single
@@ -202,15 +202,15 @@ for _prefix in _all_string_prefixes():
     endpats[_prefix + "'''"] = Single3
     endpats[_prefix + '"""'] = Double3
 
-# A set of all of the single and triple quoted string prefixes,
-#  including the opening quotes.
-single_quoted = set()
-triple_quoted = set()
+# A set of all of the single and triple noted string prefixes,
+#  including the opening notes.
+single_noted = set()
+triple_noted = set()
 for t in _all_string_prefixes():
     for u in (t + '"', t + "'"):
-        single_quoted.add(u)
+        single_noted.add(u)
     for u in (t + '"""', t + "'''"):
-        triple_quoted.add(u)
+        triple_noted.add(u)
 
 tabsize = 8
 
@@ -632,7 +632,7 @@ def _tokenize(readline, encoding):
                         stashed = None
                     yield TokenInfo(COMMENT, token, spos, epos, line)
 
-                elif token in triple_quoted:
+                elif token in triple_noted:
                     endprog = _compile(endpats[token])
                     endmatch = endprog.match(line, pos)
                     if endmatch:                           # all on one line
@@ -646,23 +646,23 @@ def _tokenize(readline, encoding):
                         break
 
                 # Check up to the first 3 chars of the token to see if
-                #  they're in the single_quoted set. If so, they start
+                #  they're in the single_noted set. If so, they start
                 #  a string.
                 # We're using the first 3, because we're looking for
                 #  "rb'" (for example) at the start of the token. If
                 #  we switch to longer prefixes, this needs to be
                 #  adjusted.
                 # Note that initial == token[:1].
-                # Also note that single quote checking must come after
-                #  triple quote checking (above).
-                elif (initial in single_quoted or
-                      token[:2] in single_quoted or
-                      token[:3] in single_quoted):
+                # Also note that single note checking must come after
+                #  triple note checking (above).
+                elif (initial in single_noted or
+                      token[:2] in single_noted or
+                      token[:3] in single_noted):
                     if token[-1] == '\n':                  # continued string
                         strstart = (lnum, start)
                         # Again, using the first 3 chars of the
                         #  token. This is looking for the matching end
-                        #  regex for the correct type of quote
+                        #  regex for the correct type of note
                         #  character. So it's really looking for
                         #  endpats["'"] or endpats['"'], by trying to
                         #  skip string prefix characters, if any.

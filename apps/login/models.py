@@ -32,7 +32,8 @@ class UserManager(models.Manager):
             email = postData['email']
             dob = postData['date_of_birth']
             password = bcrypt.hashpw(
-                postData['password'].encode(), bcrypt.gensalt(5))
+                postData['password'].encode('utf-8'), bcrypt.gensalt())
+            password = password.decode('utf-8')
             new_user = self.create(
                 first_name=first_name, last_name=last_name, email=email, password=password, dob=dob)
 
@@ -44,7 +45,7 @@ class UserManager(models.Manager):
         errors = []
         if len(self.filter(email=postData['email'])) > 0:
             user = self.filter(email=postData['email'])[0]
-            if not bcrypt.checkpw(postData['password'].encode(), user.password.encode()):
+            if not bcrypt.checkpw(postData['password'].encode('utf-8'), user.password.encode('utf-8')):
                 errors.append("username or password is incorrect")
         else:
             errors.append("username or password is incorrect")
@@ -82,6 +83,12 @@ class Patient(User):
     patient_id = models.IntegerField(default=0)
     objects = UserManager()
 
+    def __str__(self):
+        return self.email
 
-class Receptionist(models.Model):
+
+class Receptionist(User):
     department = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.email

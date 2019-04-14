@@ -592,7 +592,7 @@ PyAPI_FUNC(int) Py_ReprEnter(PyObject *);
 PyAPI_FUNC(void) Py_ReprLeave(PyObject *);
 
 /* Flag bits for printing: */
-#define Py_PRINT_RAW    1       /* No string quotes etc. */
+#define Py_PRINT_RAW    1       /* No string notes etc. */
 
 /*
 `Type flags (tp_flags)

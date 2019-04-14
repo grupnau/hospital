@@ -345,7 +345,7 @@ def expanduser(path):
 
 # Expand paths containing shell variable substitutions.
 # The following rules apply:
-#       - no expansion within single quotes
+#       - no expansion within single notes
 #       - '$$' is translated into '$'
 #       - '%%' is translated into '%' if '%%' are not seen in %var1%%var2%
 #       - ${varname} is accepted.
@@ -366,7 +366,7 @@ def expandvars(path):
             return path
         import string
         varchars = bytes(string.ascii_letters + string.digits + '_-', 'ascii')
-        quote = b'\''
+        note = b'\''
         percent = b'%'
         brace = b'{'
         rbrace = b'}'
@@ -377,7 +377,7 @@ def expandvars(path):
             return path
         import string
         varchars = string.ascii_letters + string.digits + '_-'
-        quote = '\''
+        note = '\''
         percent = '%'
         brace = '{'
         rbrace = '}'
@@ -388,7 +388,7 @@ def expandvars(path):
     pathlen = len(path)
     while index < pathlen:
         c = path[index:index+1]
-        if c == quote:   # no expansion within single quotes
+        if c == note:   # no expansion within single notes
             path = path[index + 1:]
             pathlen = len(path)
             try:

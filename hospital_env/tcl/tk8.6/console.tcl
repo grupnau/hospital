@@ -642,9 +642,9 @@ proc ::tk::ConsoleBind {w} {
 	    ::tk::console::MatchPair %W \{ \} promptEnd
 	}
     }
-    bind PostConsole <Key-quotedbl> {
+    bind PostConsole <Key-notedbl> {
 	if {"\\" ne [%W get insert-2c]} {
-	    ::tk::console::MatchQuote %W promptEnd
+	    ::tk::console::MatchNote %W promptEnd
 	}
     }
 
@@ -849,18 +849,18 @@ proc ::tk::console::MatchPair {w c1 c2 {lim 1.0}} {
     }
 }
 
-# ::tk::console::MatchQuote --
+# ::tk::console::MatchNote --
 #
-# Blinks between matching quotes.
-# Blinks just the quote if it's unmatched, otherwise blinks quoted string
-# The quote to match is assumed to be at the text index 'insert'.
+# Blinks between matching notes.
+# Blinks just the note if it's unmatched, otherwise blinks noted string
+# The note to match is assumed to be at the text index 'insert'.
 #
 # Arguments:
 #	w	- console text widget
 #
 # Calls:	::tk::console::Blink
 
-proc ::tk::console::MatchQuote {w {lim 1.0}} {
+proc ::tk::console::MatchNote {w {lim 1.0}} {
     if {!$::tk::console::magicKeys} {
 	return
     }

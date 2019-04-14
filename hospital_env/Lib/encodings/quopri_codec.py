@@ -1,4 +1,4 @@
-"""Codec for quoted-printable encoding.
+"""Codec for noted-printable encoding.
 
 This codec de/encodes from bytes to bytes.
 """
@@ -11,7 +11,7 @@ def quopri_encode(input, errors='strict'):
     assert errors == 'strict'
     f = BytesIO(input)
     g = BytesIO()
-    quopri.encode(f, g, quotetabs=True)
+    quopri.encode(f, g, notetabs=True)
     return (g.getvalue(), len(input))
 
 def quopri_decode(input, errors='strict'):
