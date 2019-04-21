@@ -68,15 +68,6 @@ class User(models.Model):
         abstract = True
 
 
-class Doctor(User):
-    years_experience = models.IntegerField(default=0)
-    specialty = models.CharField(max_length=255)
-    objects = UserManager()
-
-    def __str__(self):
-        return self.email, self.specialty
-
-
 class Patient(User):
     main_condition = models.CharField(max_length=255)
     age = models.IntegerField(default=0)
@@ -85,6 +76,18 @@ class Patient(User):
 
     def __str__(self):
         return self.email
+
+
+class Doctor(User):
+    years_experience = models.IntegerField(default=0)
+    specialty = models.CharField(max_length=255)
+    patients = models.ManyToManyField(
+        Patient, related_name="patients"
+    )
+    objects = UserManager()
+
+    def __str__(self):
+        return self.email, self.specialty
 
 
 class Receptionist(User):
