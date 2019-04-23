@@ -2,8 +2,8 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render, redirect, HttpResponseRedirect, reverse
+from ..notes.models import Note
 from .models import Patient
-from management.models import Note
 from django.contrib import messages
 
 

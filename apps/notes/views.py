@@ -1,13 +1,11 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from .models import Note
-from ..login.models import Patient
+import json
 from django.core import serializers
 from django.shortcuts import render, redirect, HttpResponse
 from django.contrib import messages
-import json
-
-# Create your views here.
+from .models import Note
+from ..login.models import Patient
 
 
 def index(request):

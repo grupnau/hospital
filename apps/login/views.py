@@ -2,9 +2,9 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render, redirect, HttpResponseRedirect, reverse
-from .models import Patient
-from ..management.models import Note
 from django.contrib import messages
+from .models import Patient
+from ..notes.models import Note
 
 
 def index(request):
@@ -13,24 +13,24 @@ def index(request):
 
 def register(request):
     result = Patient.objects.validate_registration(request.POST)
-    if type(result) == list:
+    if isinstance(result) == list:
         for err in result:
             messages.error(request, err)
         return redirect('/')
     request.session['patient_id'] = result.id
     messages.success(request, "Successfully registered!")
-    return HttpResponseRedirect(reverse("management:index"))
+    return HttpResponseRedirect(reverse("notes:index"))
 
 
 def login(request):
     result = Patient.objects.validate_login(request.POST)
-    if type(result) == list:
+    if isinstance(result) == list:
         for err in result:
             messages.error(request, err)
         return redirect('/')
     request.session['patient_id'] = result.id
     messages.success(request, "Successfully logged in!")
-    return HttpResponseRedirect(reverse("management:index"))
+    return HttpResponseRedirect(reverse("notes:index"))
 
 
 def logout(request):
