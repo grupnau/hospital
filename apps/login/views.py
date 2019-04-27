@@ -7,7 +7,12 @@ from .models import Patient
 from ..notes.models import Note
 
 
+def home(request):
+    return render(request, 'login/home.html')
+
+
 def index(request):
+    print(request)
     return render(request, 'login/index.html')
 
 

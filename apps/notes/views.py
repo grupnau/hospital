@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-import json
+# import json
 from django.core import serializers
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import render, HttpResponse
 from django.contrib import messages
 from .models import Note
 from ..login.models import Patient
