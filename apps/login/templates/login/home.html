@@ -3,21 +3,42 @@
   <head>
     <title>Home</title>
     {% load staticfiles %}
-    <link rel="stylesheet" type="text/css" href="../login/home.css" />
     <link
       rel="stylesheet"
-      type="text/css"
-      href="../../../../css/bootstrap/bootstrap.css"
+      href="{% static 'login/home.css' %}"
+      media="screen"
+      title="no title"
+      charset="utf-8"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'login/bootstrap.css' %}"
+      media="screen"
+      title="no title"
+      charset="utf-8"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'login/main.css' %}"
+      media="screen"
+      title="no title"
+      charset="utf-8"
     />
   </head>
 
   <body>
-    <div class="home--container">
-      <h1 class="home--container">Welcome to Unity</h1>
-      <h2>Please select your member type to register or login</h2>
-      <div className="home--button_container">
-        <a class="btn" href="/redirect/doctor">Doctor</a>
-        <a class="btn" href="/redirect/patient">Patient</a>
+    <div class="main--container">
+      <h1 class="home--header">Welcome to Unity</h1>
+      <h4 class="home--instruction">
+        Please select your member type to register or log in
+      </h4>
+      <div class="home--button_container">
+        <a class="btn btn-primary home--button" href="/redirect/doctor"
+          >Doctor</a
+        >
+        <a class="btn btn-primary home--button" href="/redirect/patient"
+          >Patient</a
+        >
       </div>
     </div>
   </body>

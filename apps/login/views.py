@@ -11,9 +11,12 @@ def home(request):
     return render(request, 'login/home.html')
 
 
-def index(request):
-    print(request)
-    return render(request, 'login/index.html')
+def index(request, user_type):
+    print(user_type)
+    if user_type == 'doctor':
+        return render(request, 'login/docIndex.html')
+    else:
+        return render(request, 'login/patIndex.html')
 
 
 def register(request):
