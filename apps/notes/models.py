@@ -1,14 +1,12 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from .models import Patient
 from django.db import models
+from ..login.models import Patient, Doctor
 
 
 class NoteManager(models.Manager):
-    def validate_note(self, post_data):
-        # print "models printing"
-        # print post_data
-
+    @staticmethod
+    def validate_note(post_data):
         errors = []
 
         if len(post_data['noted_by']) < 3:
@@ -19,21 +17,21 @@ class NoteManager(models.Manager):
             errors.append('This note has already been added')
         return errors
 
-    def create_note(self, clean_data, user_id):
+    def create_note(self, clean_data, user_id, patient_id):
 
         return self.create(
-            noted_by=clean_data['noted_by'],
             content=clean_data['content'],
-            posted_by=Patient.objects.get(id=user_id)
+            posted_by=Doctor.objects.get(id=user_id),
+            patient=Patient.objects.get(id=patient_id)
         )
 
 
 class Note(models.Model):
-    noted_by = models.CharField(max_length=255)
     content = models.TextField()
     posted_by = models.ForeignKey(
-        Patient, related_name="notes", on_delete='models.PROTECT')
-    users = models.ManyToManyField(Patient, related_name="faves")
+        Doctor, related_name="notes", on_delete='models.CASCADE')
+    patient = models.ForeignKey(
+        Patient, related_name="notes", on_delete='models.CASCADE')
     created_at = models.DateTimeField(auto_now_add=True)
     objects = NoteManager()
 

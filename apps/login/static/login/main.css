@@ -1,0 +1,127 @@
+html {
+  height: 100vh;
+}
+body {
+  min-height: 100vh !important;
+  background-color: rgba(40, 230, 195, 0.625) !important;
+}
+
+.main--container {
+  background-color: rgb(105, 195, 255);
+  border: 0.1rem solid black;
+  border-radius: 0.5rem;
+  width: 80%;
+  margin: auto;
+  margin-top: 12rem !important;
+  padding: 1rem 0rem;
+  text-align: center;
+}
+
+.main--button {
+  margin: 0rem 1rem;
+  border-color: rgb(86, 49, 170) !important;
+  background: rgb(86, 49, 170) !important;
+}
+
+.main--button:hover {
+  border-color: rgb(158, 120, 255) !important;
+  background: rgb(158, 120, 255) !important;
+  color: black !important;
+}
+
+.main--form_container {
+  display: flex;
+  justify-content: space-between;
+  width: 85%;
+  margin: auto;
+}
+
+form {
+  display: inline-block;
+  border: 2px solid black;
+  width: 450px;
+  border-radius: 10px;
+  vertical-align: top;
+  padding-left: 10px;
+}
+
+.main--form_register {
+  display: inline-block;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+.main--form_login {
+  height: 12rem;
+}
+
+.main--button_container {
+  text-align: right;
+  width: 67%;
+  margin: 1rem auto;
+}
+
+p.home_logout {
+  display: block;
+  text-align: right;
+}
+
+h4 a {
+  font-size: 14px;
+}
+h3 {
+  vertical-align: top;
+  display: inline-block;
+  margin-top: -1.4rem;
+  margin-right: 12rem;
+  background-color: rgb(105, 195, 255);
+  border: 0.1rem solid black;
+  border-radius: 0.5rem;
+  padding: 0.2rem 1rem;
+  width: 15rem;
+}
+
+.border_break {
+  width: 25rem;
+  display: inline-block;
+  margin-right: 40rem;
+  min-height: 0px;
+}
+.error {
+  font-style: italic;
+  font-weight: bold;
+}
+header {
+  text-align: right;
+}
+
+.messages {
+  width: 300px;
+  min-height: 10px;
+  font-style: italic;
+  font-weight: bold;
+}
+
+td {
+  width: 180px;
+  text-align: left;
+}
+td input {
+  margin: 0.2rem;
+  width: 166.22px;
+  border: 0.1rem solid black;
+  border-radius: 0.5rem;
+  padding: 0.2rem;
+  outline: none;
+  background: rgb(235, 220, 255);
+}
+td input:focus {
+  border: 0.1rem solid rgb(86, 49, 170);
+}
+.success {
+  color: green;
+}
+/* .login_body {
+  width: 970px;
+  margin: auto;
+  border: none;
+} */

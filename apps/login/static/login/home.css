@@ -1,0 +1,11 @@
+.home--header {
+  text-align: left;
+  margin-bottom: 3rem;
+  padding: 0.5rem 1rem;
+  width: 40%;
+  border-bottom: 0.5rem solid rgb(86, 49, 170) !important;
+  /* border-radius: 1rem; */
+}
+.home--button_container {
+  margin: 1rem 0rem;
+}

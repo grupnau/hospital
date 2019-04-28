@@ -3,7 +3,8 @@ from . import views
 
 app_name = 'login'
 urlpatterns = [
-    url(r'^$', views.index),
+    url(r'^$', views.home),
+    url(r'^redirect/(?P<user_type>\w+)$', views.index),
     url(r'^register$', views.register),
     url(r'^login$', views.login),
     url(r'^logout$', views.logout, name='logout'),
