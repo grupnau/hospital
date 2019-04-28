@@ -9,14 +9,3 @@
 .home--button_container {
   margin: 1rem 0rem;
 }
-
-.home--button {
-  margin: 0rem 1rem;
-  border-color: rgb(86, 49, 170) !important;
-  background: rgb(86, 49, 170) !important;
-}
-.home--button:hover {
-  border-color: rgb(158, 120, 255) !important;
-  background: rgb(158, 120, 255) !important;
-  color: black !important;
-}

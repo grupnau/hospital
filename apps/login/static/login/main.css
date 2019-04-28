@@ -17,10 +17,25 @@ body {
   text-align: center;
 }
 
-p.home_logout {
-  display: block;
-  text-align: right;
+.main--button {
+  margin: 0rem 1rem;
+  border-color: rgb(86, 49, 170) !important;
+  background: rgb(86, 49, 170) !important;
 }
+
+.main--button:hover {
+  border-color: rgb(158, 120, 255) !important;
+  background: rgb(158, 120, 255) !important;
+  color: black !important;
+}
+
+.main--form_container {
+  display: flex;
+  justify-content: space-between;
+  width: 85%;
+  margin: auto;
+}
+
 form {
   display: inline-block;
   border: 2px solid black;
@@ -29,13 +44,27 @@ form {
   vertical-align: top;
   padding-left: 10px;
 }
-form.left {
+
+.main--form_register {
   display: inline-block;
   border: 2px solid black;
-  width: 450px;
   border-radius: 10px;
-  vertical-align: top;
 }
+.main--form_login {
+  height: 12rem;
+}
+
+.main--button_container {
+  text-align: right;
+  width: 67%;
+  margin: 1rem auto;
+}
+
+p.home_logout {
+  display: block;
+  text-align: right;
+}
+
 h4 a {
   font-size: 14px;
 }
@@ -43,21 +72,18 @@ h3 {
   vertical-align: top;
   display: inline-block;
   margin-top: -1.4rem;
-  margin-left: 2rem;
+  margin-right: 12rem;
   background-color: rgb(105, 195, 255);
   border: 0.1rem solid black;
   border-radius: 0.5rem;
   padding: 0.2rem 1rem;
+  width: 15rem;
 }
-/* div {
+
+.border_break {
+  width: 25rem;
   display: inline-block;
-  margin: auto;
-  min-height: 155px;
-} */
-div.border_break {
-  width: 180px;
-  display: inline-block;
-  /* margin: auto; */
+  margin-right: 40rem;
   min-height: 0px;
 }
 .error {
@@ -74,31 +100,22 @@ header {
   font-style: italic;
   font-weight: bold;
 }
-/* .names {
-  vertical-align: top;
-  max-height: 191px;
-}
-.comment {
-  margin: 0px;
-} */
-/* .button {
-  text-align: right;
-  border: 2px solid black;
-  box-shadow: 1px 1px 2px solid black;
-} */
-.login_button {
-  text-align: center;
-  margin-left: 200px;
-}
-p {
-  line-height: 30px;
-}
+
 td {
   width: 180px;
+  text-align: left;
 }
 td input {
   margin: 0.2rem;
   width: 166.22px;
+  border: 0.1rem solid black;
+  border-radius: 0.5rem;
+  padding: 0.2rem;
+  outline: none;
+  background: rgb(235, 220, 255);
+}
+td input:focus {
+  border: 0.1rem solid rgb(86, 49, 170);
 }
 .success {
   color: green;

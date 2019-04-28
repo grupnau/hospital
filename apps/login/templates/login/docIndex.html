@@ -37,74 +37,86 @@
     </div>
     {% endif %}
     <div class="main--container">
-      <h1>Welcome!</h1>
-      <form class="left" action="/register" method="post">
-        {% csrf_token %}
-        <div class="border_break">
-          <h3>Registration</h3>
-        </div>
-        <table>
-          <tr>
-            <td><label for="first_name">First Name:</label></td>
-            <td><input type="text" name="first_name" /></td>
-          </tr>
-          <tr>
-            <td><label for="last_name">Last Name:</label></td>
-            <td><input type="text" name="last_name" /></td>
-          </tr>
-          <tr>
-            <td><label for="email">Email:</label></td>
-            <td><input type="text" name="email" /></td>
-          </tr>
-          <tr>
-            <td><label for="password">Password:</label></td>
-            <td><input type="password" name="password" /></td>
-          </tr>
-          <tr>
-            <td><label for="confirm_password">Confirm Password:</label></td>
-            <td><input type="password" name="confirm_password" /></td>
-          </tr>
-          <tr>
-            <td><label for="date_of_birth">Date of Birth:</label></td>
-            <td><input type="date" name="date_of_birth" /></td>
-          </tr>
-          <tr>
-            <td><label for="years_experience">Years of Experience:</label></td>
-            <td><input type="number" name="years_experience" /></td>
-          </tr>
-          <tr>
-            <td><label for="specialty">Specialty:</label></td>
-            <td><input type="text" name="specialty" /></td>
-          </tr>
-        </table>
+      <h1 class="docIndex--header">Register | Login</h1>
+      <div class="main--form_container">
+        <form class="main--form_register" action="/register" method="post">
+          {% csrf_token %}
+          <div class="border_break">
+            <h3>Registration</h3>
+          </div>
+          <table>
+            <tr>
+              <td><label for="first_name">First Name:</label></td>
+              <td><input type="text" name="first_name" /></td>
+            </tr>
+            <tr>
+              <td><label for="last_name">Last Name:</label></td>
+              <td><input type="text" name="last_name" /></td>
+            </tr>
+            <tr>
+              <td><label for="email">Email:</label></td>
+              <td><input type="text" name="email" /></td>
+            </tr>
+            <tr>
+              <td><label for="password">Password:</label></td>
+              <td><input type="password" name="password" /></td>
+            </tr>
+            <tr>
+              <td><label for="confirm_password">Confirm Password:</label></td>
+              <td><input type="password" name="confirm_password" /></td>
+            </tr>
+            <tr>
+              <td><label for="date_of_birth">Date of Birth:</label></td>
+              <td><input type="date" name="date_of_birth" /></td>
+            </tr>
+            <tr>
+              <td>
+                <label for="years_experience">Years of Experience:</label>
+              </td>
+              <td><input type="number" name="years_experience" /></td>
+            </tr>
+            <tr>
+              <td><label for="specialty">Specialty:</label></td>
+              <td><input type="text" name="specialty" /></td>
+            </tr>
+          </table>
 
-        <p class="login_button"><input type="submit" value="Register" /></p>
-      </form>
-      <form action="/login" method="post">
-        {% csrf_token %}
-        <h3>Login</h3>
-        <table>
-          <tr>
-            <td><label for="email">Email:</label></td>
-            <td><input type="text" name="email" /></td>
-          </tr>
-          <tr>
-            <td><label for="password">Password:</label></td>
-            <td><input type="password" name="password" id="password" /></td>
-          </tr>
-        </table>
+          <p class="main--button_container">
+            <td>
+              <input
+                class="btn btn-primary main--button"
+                type="submit"
+                value="Register"
+              />
+            </td>
+          </p>
+        </form>
+        <form class="main--form_login" action="/login" method="post">
+          {% csrf_token %}
+          <h3>Login</h3>
+          <table>
+            <tr>
+              <td><label for="email">Email:</label></td>
+              <td><input type="text" name="email" /></td>
+            </tr>
+            <tr>
+              <td><label for="password">Password:</label></td>
+              <td><input type="password" name="password" id="password" /></td>
+            </tr>
+          </table>
 
-        <p class="login_button">
-          <td>
-            <input
-              class="btn btn-primary"
-              type="submit"
-              name="login"
-              value="Log In"
-            />
-          </td>
-        </p>
-      </form>
+          <p class="main--button_container">
+            <td>
+              <input
+                class="btn btn-primary main--button"
+                type="submit"
+                name="login"
+                value="Log In"
+              />
+            </td>
+          </p>
+        </form>
+      </div>
     </div>
   </body>
 </html>
