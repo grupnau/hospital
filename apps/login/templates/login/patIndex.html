@@ -5,7 +5,7 @@
     {% load staticfiles %}
     <link
       rel="stylesheet"
-      href="{% static 'login/style.css' %}"
+      href="{% static 'login/pat.css' %}"
       media="screen"
       title="no title"
       charset="utf-8"
@@ -13,6 +13,13 @@
     <link
       rel="stylesheet"
       href="{% static 'login/bootstrap.css' %}"
+      media="screen"
+      title="no title"
+      charset="utf-8"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'login/main.css' %}"
       media="screen"
       title="no title"
       charset="utf-8"
@@ -29,58 +36,103 @@
       {% endfor %}
     </div>
     {% endif %}
-    <h1>Welcome!</h1>
-    <form class="left" action="/register" method="post">
-      {% csrf_token %}
-      <div class="border_break">
-        <h3>Registration</h3>
+    <div class="main--container">
+      <h1 class="main--header">Register | Login</h1>
+      <div class="main--content_container">
+        <form
+          class="main--form_register"
+          action="/register/patient"
+          method="post"
+        >
+          {% csrf_token %}
+          <div class="main--border_break">
+            <h3>Registration</h3>
+          </div>
+          <table>
+            <tr>
+              <td><label for="first_name">First Name:</label></td>
+              <td><input type="text" name="first_name" /></td>
+            </tr>
+            <tr>
+              <td><label for="last_name">Last Name:</label></td>
+              <td><input type="text" name="last_name" /></td>
+            </tr>
+            <tr>
+              <td><label for="email">Email:</label></td>
+              <td><input type="text" name="email" /></td>
+            </tr>
+            <tr>
+              <td><label for="password">Password:</label></td>
+              <td><input type="password" name="password" /></td>
+            </tr>
+            <tr>
+              <td><label for="confirm_password">Confirm Password:</label></td>
+              <td><input type="password" name="confirm_password" /></td>
+            </tr>
+            <tr>
+              <td><label for="date_of_birth">Date of Birth:</label></td>
+              <td><input type="date" name="date_of_birth" /></td>
+            </tr>
+            <tr>
+              <td>
+                <label for="main_condition">Main Condition</label>
+              </td>
+              <td><input type="number" name="main_condition" /></td>
+            </tr>
+            <tr>
+              <td><label for="age">Age:</label></td>
+              <td><input type="number" name="age" /></td>
+            </tr>
+            <tr>
+              <td>
+                <label for="doctor">Doctor:</label>
+              </td>
+              <td>
+                <select id="doctors">
+                  {% for doctor in doctors %}
+                  <option>Dr. {{ doctor.last_name }}</option>
+                  {% endfor %}
+                </select>
+              </td>
+            </tr>
+          </table>
+
+          <p class="main--button_container">
+            <td>
+              <input
+                class="btn btn-primary main--button"
+                type="submit"
+                value="Register"
+              />
+            </td>
+          </p>
+        </form>
+        <form class="main--form_login" action="/login/patient" method="post">
+          {% csrf_token %}
+          <h3>Login</h3>
+          <table>
+            <tr>
+              <td><label for="email">Email:</label></td>
+              <td><input type="text" name="email" /></td>
+            </tr>
+            <tr>
+              <td><label for="password">Password:</label></td>
+              <td><input type="password" name="password" id="password" /></td>
+            </tr>
+          </table>
+
+          <p class="main--button_container">
+            <td>
+              <input
+                class="btn btn-primary main--button"
+                type="submit"
+                name="login"
+                value="Log In"
+              />
+            </td>
+          </p>
+        </form>
       </div>
-      <table>
-        <tr>
-          <td><label for="first_name">First Name:</label></td>
-          <td><input type="text" name="first_name" /></td>
-        </tr>
-        <tr>
-          <td><label for="last_name">Last Name:</label></td>
-          <td><input type="text" name="last_name" /></td>
-        </tr>
-        <tr>
-          <td><label for="email">Email:</label></td>
-          <td><input type="text" name="email" /></td>
-        </tr>
-        <tr>
-          <td><label for="password">Password:</label></td>
-          <td><input type="password" name="password" /></td>
-        </tr>
-        <tr>
-          <td><label for="confirm_password">Confirm Password:</label></td>
-          <td><input type="password" name="confirm_password" /></td>
-        </tr>
-        <tr>
-          <td><label for="date_of_birth">Date of Birth:</label></td>
-          <td><input type="date" name="date_of_birth" /></td>
-        </tr>
-      </table>
-
-      <p class="login_button"><input type="submit" value="Register" /></p>
-    </form>
-    <form action="/login" method="post">
-      {% csrf_token %}
-      <h3>Login</h3>
-      <table>
-        <tr>
-          <td><label for="email">Email:</label></td>
-          <td><input type="text" name="email" /></td>
-        </tr>
-        <tr>
-          <td><label for="password">Password:</label></td>
-          <td><input type="password" name="password" id="password" /></td>
-        </tr>
-      </table>
-
-      <p class="login_button">
-        <td><input type="submit" name="login" value="Log In" /></td>
-      </p>
-    </form>
+    </div>
   </body>
 </html>

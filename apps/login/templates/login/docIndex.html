@@ -5,7 +5,7 @@
     {% load staticfiles %}
     <link
       rel="stylesheet"
-      href="{% static 'login/docIndex.css' %}"
+      href="{% static 'login/doc.css' %}"
       media="screen"
       title="no title"
       charset="utf-8"
@@ -37,11 +37,15 @@
     </div>
     {% endif %}
     <div class="main--container">
-      <h1 class="docIndex--header">Register | Login</h1>
-      <div class="main--form_container">
-        <form class="main--form_register" action="/register" method="post">
+      <h1 class="main--header">Register | Login</h1>
+      <div class="main--content_container">
+        <form
+          class="main--form_register"
+          action="/register/doctor"
+          method="post"
+        >
           {% csrf_token %}
-          <div class="border_break">
+          <div class="main--border_break">
             <h3>Registration</h3>
           </div>
           <table>
@@ -91,7 +95,7 @@
             </td>
           </p>
         </form>
-        <form class="main--form_login" action="/login" method="post">
+        <form class="main--form_login" action="/login/doctor" method="post">
           {% csrf_token %}
           <h3>Login</h3>
           <table>

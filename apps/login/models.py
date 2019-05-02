@@ -10,7 +10,8 @@ NAME_REGEX = re.compile(r'^[A-Za-z]\w+$')
 
 
 class UserManager(models.Manager):
-    def validate_registration(self, post_data):
+    @classmethod
+    def validate_registration(cls, post_data, user_type):
         print(post_data)
         errors = []
         if len(post_data['first_name']) < 2 or len(post_data['last_name']) < 2:
@@ -28,7 +29,6 @@ class UserManager(models.Manager):
             errors.append("passwords don't match")
 
         if not errors:
-            user_type = post_data['user_type']
             first_name = post_data['first_name']
             last_name = post_data['last_name']
             email = post_data['email']
@@ -36,17 +36,18 @@ class UserManager(models.Manager):
             password = bcrypt.hashpw(
                 post_data['password'].encode('utf-8'), bcrypt.gensalt())
             password = password.decode('utf-8')
-            if user_type == 'Doctor':
-                new_user = Doctor.create(first_name=first_name, last_name=last_name, email=email, password=password,
-                                         dob=dob, years_experience=post_data['years_experience'], specialty=post_data['specialty'])
-            elif user_type == 'Patient':
-                new_user = Patient.create(first_name=first_name, last_name=last_name, email=email, password=password,
-                                          dob=dob, main_condition=post_data['main_condition'], age=post_data['age'], doctor=Doctor.objects.get(post_data['doctor_id']))
+            if user_type == 'doctor':
+                new_user = Doctor(first_name=first_name, last_name=last_name, email=email, password=password,
+                                  dob=dob, years_experience=post_data['years_experience'], specialty=post_data['specialty'])
+            elif user_type == 'patient':
+                new_user = Patient(first_name=first_name, last_name=last_name, email=email, password=password,
+                                   dob=dob, main_condition=post_data['main_condition'], age=post_data['age'], doctor=Doctor.objects.get(post_data['doctor_id']))
+            new_user.save()
             return new_user
 
         return errors
 
-    def validate_login(self, post_data):
+    def validate_login(self, post_data, user_type):
         errors = []
         if self.filter(email=post_data['email']):
             user = self.filter(email=post_data['email'])[0]
@@ -76,6 +77,7 @@ class User(models.Model):
 class Doctor(User):
     years_experience = models.IntegerField(default=0)
     specialty = models.CharField(max_length=255)
+
     objects = UserManager()
 
     def __str__(self):
@@ -87,13 +89,8 @@ class Patient(User):
     age = models.IntegerField(default=18)
     doctor = models.ForeignKey(
         Doctor, related_name='patients', on_delete='models.CASCADE')
+
     objects = UserManager()
 
     def __str__(self):
         return self.email
-
-# class Receptionist(User):
-#     department = models.CharField(max_length=255)
-
-#     def __str__(self):
-#         return self.email

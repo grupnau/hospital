@@ -5,14 +5,24 @@ from django.core import serializers
 from django.shortcuts import render, HttpResponse
 from django.contrib import messages
 from .models import Note
-from ..login.models import Patient
+from ..login.models import Doctor, Patient
 
 
 def index(request):
+    user_type = request.path.split('/')[1]
+    print(user_type)
+    if user_type == 'doctor':
+        obj = Doctor.objects.get(id=request.session['doctor_id'])
+        path = "notes/doc.html"
+    else:
+        obj = Patient.objects.get(id=request.session['patient_id'])
+        path = "notes/pat.html"
+
     context = {
-        'patient': Patient.objects.get(id=request.session['patient_id'])
+        'doctor': obj
     }
-    return render(request, 'notes/index.html', context)
+
+    return render(request, path, context)
 
 
 def init_notes(request):
