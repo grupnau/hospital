@@ -19,5 +19,6 @@ from django.conf.urls import url, include
 urlpatterns = [
     url('admin/', admin.site.urls),
     url(r'^', include('apps.login.urls', namespace='login')),
-    url(r'^notes/', include('apps.notes.urls', namespace='notes'))
+    url(r'^doctor/notes/', include('apps.notes.urls', namespace='doctor/notes')),
+    url(r'^patient/notes/', include('apps.notes.urls', namespace='patient/notes'))
 ]

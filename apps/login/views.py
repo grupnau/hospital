@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render, redirect, HttpResponseRedirect, reverse
 from django.contrib import messages
-from .models import Patient
+from .models import Doctor, Patient
 from ..notes.models import Note
 
 
@@ -12,33 +12,48 @@ def home(request):
 
 
 def index(request, user_type):
-    print(user_type)
     if user_type == 'doctor':
         return render(request, 'login/docIndex.html')
+    context = {
+        'doctors': Doctor.objects.all()
+    }
+    return render(request, 'login/patIndex.html', context)
+
+
+def register(request, user_type):
+    if user_type == 'doctor':
+        id_type = 'doctor_id'
+        result = Doctor.objects.validate_registration(request.POST, user_type)
     else:
-        return render(request, 'login/patIndex.html')
+        id_type = 'patient_id'
+        result = Patient.objects.validate_registration(request.POST, user_type)
 
-
-def register(request):
-    result = Patient.objects.validate_registration(request.POST)
-    if isinstance(result) == list:
+    if isinstance(result, list):
         for err in result:
             messages.error(request, err)
         return redirect('/')
-    request.session['patient_id'] = result.id
+
+    request.session[id_type] = result.id
     messages.success(request, "Successfully registered!")
     return HttpResponseRedirect(reverse("notes:index"))
 
 
-def login(request):
-    result = Patient.objects.validate_login(request.POST)
-    if isinstance(result) == list:
+def login(request, user_type):
+    if user_type == 'doctor':
+        id_type = 'doctor_id'
+        result = Doctor.objects.validate_login(request.POST, user_type)
+    else:
+        id_type = 'patient_id'
+        result = Patient.objects.validate_login(request.POST, user_type)
+
+    if isinstance(result, list):
         for err in result:
             messages.error(request, err)
         return redirect('/')
-    request.session['patient_id'] = result.id
+
+    request.session[id_type] = result.id
     messages.success(request, "Successfully logged in!")
-    return HttpResponseRedirect(reverse("notes:index"))
+    return HttpResponseRedirect(reverse(user_type + "/notes:index"))
 
 
 def logout(request):

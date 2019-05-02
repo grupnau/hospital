@@ -22,12 +22,12 @@
       <h2>Welcome, {{ user.first_name }}!</h2>
     </header>
     <div class="wrap_left">
-      <h3 class="border_break">Quotable Notes</h3>
+      <h3 class="main--border_break">Quotable Notes</h3>
       <div class="wrapper_notes" id="wrapper_notes"></div>
     </div>
     <div class="wrap_right">
       <div class="faves">
-        <h3 class="border_break">Favorites</h3>
+        <h3 class="main--border_break">Favorites</h3>
         <div class="faves_scroll" id="faves_scroll"></div>
       </div>
       <form
@@ -37,7 +37,7 @@
         method="post"
       >
         {% csrf_token %}
-        <h3 class="border_break">Post Note</h3>
+        <h3 class="main--border_break">Post Note</h3>
         <p>
           <label for="noted_by"
             >Noted By:

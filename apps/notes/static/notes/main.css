@@ -10,11 +10,12 @@ body {
   background-color: rgb(105, 195, 255);
   border: 0.1rem solid black;
   border-radius: 0.5rem;
-  width: 80%;
+  width: 90%;
   margin: auto;
-  margin-top: 12rem !important;
+  margin-top: 4rem !important;
   padding: 1rem 0rem;
   text-align: center;
+  height: 80%;
 }
 
 .main--header {
@@ -38,20 +39,33 @@ body {
   color: black !important;
 }
 
+.main--title_container {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: rgb(105, 195, 255);
+  border-bottom: 0.2rem solid rgb(86, 49, 170) !important;
+}
+
+.main--welcome {
+  display: inline-block;
+}
+
+.main--logout_button {
+  outline: none;
+  display: inline-block;
+  font-size: 1.2rem;
+  padding: 0rem 2rem !important;
+  margin: 0.5rem 0rem;
+  border-radius: 2rem;
+  height: 2rem;
+}
+
 .main--content_container {
   display: flex;
   justify-content: space-between;
   width: 85%;
   margin: auto;
-}
-
-form {
-  display: inline-block;
-  border: 2px solid black;
-  border-radius: 10px;
-  vertical-align: top;
-  padding-left: 10px;
-  width: 45%;
 }
 
 .main--form_register {
@@ -88,6 +102,13 @@ h3 {
   padding: 0.2rem 1rem;
   width: 15rem;
 }
+
+.main--border_break {
+  width: 25rem;
+  display: inline-block;
+  margin-right: 40rem;
+  min-height: 0px;
+}
 .error {
   font-style: italic;
   font-weight: bold;
@@ -107,8 +128,7 @@ td {
   width: 180px;
   text-align: left;
 }
-td input,
-select {
+td input {
   margin: 0.2rem;
   width: 166.22px;
   border: 0.1rem solid black;
