@@ -38,7 +38,7 @@
         <p>{{ message }}</p>
         {% endfor %} {% endif %}
       </div> -->
-      <h2 class="main--welcome">Welcome, Dr. {{ doctor.last_name }}</h2>
+      <h2 class="main--welcome">Welcome, {{ patient.first_name }}</h2>
       <a
         class="btn btn-primary main--button main--logout_button"
         href="{% url 'login:logout' %}"
@@ -46,30 +46,20 @@
       >
     </header>
     <div class="main--container">
-      <h1 class="main--header">Patient Notes</h1>
+      <h1 class="main--header">My Account</h1>
       <div class="main--content_container">
         <div class="doc--patient_container">
-          <h3 class="main--float_head">Patients</h3>
-          <div class="doc--card_container_outer">
-            <div class="doc--card_container" id="notes_container">
-              {% if patients %} {% for patient in patients %}
-              <div class="main--card_first_last">
-                <div class="doc--patient_card">
-                  <p class="doc--patient_card_head">
-                    {{ patient.first_name }} {{ patient.last_name }}
-                  </p>
-                  <p>{{ patient.age }}</p>
-                  <p>{{ patient.main_condition }}</p>
-                </div>
-              </div>
-              {% endfor %} {% else %}
-              <p>No patients found.</p>
-              {% endif %}
-            </div>
+          <h3 class="main--border_break">Your Notes</h3>
+          <div class="main--notes_container" id="notes_container">
+            {% if notes %} {% for note in notes %}
+            <p>{{ note.title }}</p>
+            {% endfor %} {% else %}
+            <p>No notes found.</p>
+            {% endif %}
           </div>
         </div>
         <div class="doc--patient_container">
-          <h3 class="main--float_head">Selected Patient</h3>
+          <h3 class="main--border_break">Your Doctor</h3>
           <div class="faves_scroll" id="faves_scroll"></div>
           <div class="main--user_info_container">
             <div class="main--user_info_head">Dr. {{ doctor.last_name }}</div>
