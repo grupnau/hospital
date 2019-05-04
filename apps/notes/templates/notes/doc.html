@@ -25,9 +25,9 @@
   <div class="main--container">
     <h1 class="main--header">Patient Notes</h1>
     <div class="main--content_container">
-      <div class="doc--patient_container">
+      <div class="main--info_container">
         <h3 class="main--float_head">Patients</h3>
-        <div class="doc--card_container_outer">
+        <div class="main--card_container_outer">
           <div class="doc--card_container" id="notes_container">
             {% if patients %} {% for patient in patients %}
             <div class="main--card_first_last">
@@ -45,10 +45,10 @@
           </div>
         </div>
       </div>
-      <div class="doc--patient_container">
+      <div class="main--info_container">
         <h3 class="main--float_head">Selected Patient</h3>
         <div class="faves_scroll" id="faves_scroll"></div>
-        <div class="doc--card_container_outer"></div>
+        <div class="main--card_container_outer"></div>
         <div class="main--user_info_container">
           <div class="main--user_info_head">Dr. {{ doctor.last_name }}</div>
           <div class="main--user_info_content">

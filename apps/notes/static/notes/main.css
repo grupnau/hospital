@@ -73,6 +73,18 @@ body {
   text-align: left;
 }
 
+.main--info_container {
+  width: 50%;
+  padding: 0.2rem 2rem 1rem;
+}
+.main--card_container_outer {
+  height: 88%;
+  padding: 0.6rem 0rem;
+  margin-top: 0.5rem;
+  box-shadow: 0 9px 0px 0px rgb(144, 210, 254),
+    0 -9px 0px 0px rgb(144, 210, 254), 12px 0 15px -8px rgba(31, 73, 125, 0.8),
+    -12px 0 15px -8px rgba(31, 73, 125, 0.8);
+}
 .main--user_info_container {
   text-align: left;
   border: 0.1rem solid black;
