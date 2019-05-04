@@ -12,7 +12,6 @@ NAME_REGEX = re.compile(r'^[A-Za-z]\w+$')
 class UserManager(models.Manager):
     @classmethod
     def validate_registration(cls, post_data, user_type):
-        print(post_data)
         errors = []
         if len(post_data['first_name']) < 2 or len(post_data['last_name']) < 2:
             errors.append(
@@ -39,15 +38,23 @@ class UserManager(models.Manager):
             if user_type == 'doctor':
                 new_user = Doctor(first_name=first_name, last_name=last_name, email=email, password=password,
                                   dob=dob, years_experience=post_data['years_experience'], specialty=post_data['specialty'])
+                new_user.save()
             elif user_type == 'patient':
+                doc_id = post_data['doctor']
+                this_doctor = Doctor.objects.get(id=doc_id)
                 new_user = Patient(first_name=first_name, last_name=last_name, email=email, password=password,
-                                   dob=dob, main_condition=post_data['main_condition'], age=post_data['age'], doctor=Doctor.objects.get(post_data['doctor_id']))
-            new_user.save()
+                                   dob=dob, main_condition=post_data['main_condition'], age=post_data['age'], doctor=Doctor.objects.get(id=doc_id))
+                new_user.save()
+                this_patient = Patient.objects.get(
+                    id=new_user.id)
+                this_doctor.patients.add(this_patient)
+                this_doctor.save()
+
             return new_user
 
         return errors
 
-    def validate_login(self, post_data, user_type):
+    def validate_login(self, post_data):
         errors = []
         if self.filter(email=post_data['email']):
             user = self.filter(email=post_data['email'])[0]
@@ -77,6 +84,7 @@ class User(models.Model):
 class Doctor(User):
     years_experience = models.IntegerField(default=0)
     specialty = models.CharField(max_length=255)
+    patients = models.ForeignKey
 
     objects = UserManager()
 
@@ -93,4 +101,4 @@ class Patient(User):
     objects = UserManager()
 
     def __str__(self):
-        return self.email
+        return self.email, self.first_name

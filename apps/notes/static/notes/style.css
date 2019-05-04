@@ -41,7 +41,7 @@ p.noted_by {
   font-size: 14px;
   text-align: left;
 }
-div.wrapper_notes {
+div.notes_container {
   display: inline-block;
   width: 450px;
   height: 580px;

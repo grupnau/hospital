@@ -17,7 +17,7 @@ class NoteManager(models.Manager):
             errors.append('This note has already been added')
         return errors
 
-    def create_note(self, clean_data, doctor, patient_id):
+    def create_note(self, clean_data, doctor_id, patient_id):
 
         return self.create(
             content=clean_data['content'],

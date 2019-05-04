@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 # import json
 from django.core import serializers
+from django.forms.models import model_to_dict
 from django.shortcuts import render, HttpResponse
 from django.contrib import messages
 from .models import Note
@@ -12,15 +13,20 @@ def index(request):
     user_type = request.path.split('/')[1]
     print(user_type)
     if user_type == 'doctor':
-        obj = Doctor.objects.get(id=request.session['doctor_id'])
+        doc = Doctor.objects.get(id=request.session['doctor_id'])
+        patients = Patient.objects.all()
         path = "notes/doc.html"
+        context = {
+            'patients': patients,
+            'doctor': doc
+        }
     else:
-        obj = Patient.objects.get(id=request.session['patient_id'])
+        patient = Patient.objects.get(id=request.session['patient_id'])
+        related_doctor = Doctor.objects.get(id=patient.doctor.id)
         path = "notes/pat.html"
-
-    context = {
-        'doctor': obj
-    }
+        context = {
+            'doctor': related_doctor,
+            'patient': patient}
 
     return render(request, path, context)
 

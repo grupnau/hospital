@@ -13,11 +13,15 @@ def home(request):
 
 def index(request, user_type):
     if user_type == 'doctor':
-        return render(request, 'login/docIndex.html')
+        context = {
+            'patients': Patient.objects.all()
+        }
+        return render(request, 'login/doc.html', context)
+
     context = {
         'doctors': Doctor.objects.all()
     }
-    return render(request, 'login/patIndex.html', context)
+    return render(request, 'login/pat.html', context)
 
 
 def register(request, user_type):
@@ -41,15 +45,15 @@ def register(request, user_type):
 def login(request, user_type):
     if user_type == 'doctor':
         id_type = 'doctor_id'
-        result = Doctor.objects.validate_login(request.POST, user_type)
+        result = Doctor.objects.validate_login(request.POST)
     else:
         id_type = 'patient_id'
-        result = Patient.objects.validate_login(request.POST, user_type)
+        result = Patient.objects.validate_login(request.POST)
 
     if isinstance(result, list):
         for err in result:
             messages.error(request, err)
-        return redirect('/')
+        return redirect('/redirect/' + user_type)
 
     request.session[id_type] = result.id
     messages.success(request, "Successfully logged in!")

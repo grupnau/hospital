@@ -15,7 +15,7 @@ $('#post_note').submit(function(e){
         method: 'post',
         data: data_to_request,
         success: function(response){
-            $('#wrapper_notes').html(renderNotes(response));
+            $('#notes_container').html(renderNotes(response));
         }
     });
     $(this)[0].reset();
@@ -32,7 +32,7 @@ $('#notes').on("click", "#add_to_fav", function(){
         url: 'refresh',
         method:'get',
         success: function(response){
-            $('#wrapper_notes').html(renderNotes(response));
+            $('#notes_container').html(renderNotes(response));
         }
     })
 
@@ -58,7 +58,7 @@ function initialize(){
         method: 'get',
         success: function(response){
             initialize2();
-            $('#wrapper_notes').html(renderNotes(response));
+            $('#notes_container').html(renderNotes(response));
         }
     })
 }
@@ -98,7 +98,7 @@ function initialize3(){
 //some reason
 function renderNotes(notes){
     let el = document.createElement('div');
-    el.setAttribute("class", "wrapper_notes");
+    el.setAttribute("class", "notes_container");
     for(let i=0;i<notes.length;i++){
         var note = document.createElement('div');
         note.setAttribute('class', 'notes');
@@ -245,7 +245,7 @@ function refresh(){
         url: 'refresh',
         method:'get',
         success: function(response){
-            $('#wrapper_notes').html(renderNotes(response));
+            $('#notes_container').html(renderNotes(response));
         }
 
     })
