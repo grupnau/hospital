@@ -1,8 +1,27 @@
+.doc--patient_container {
+  width: 50%;
+  padding: 0.2rem 2rem 1rem;
+}
+::-webkit-scrollbar {
+  width: 1rem;
+}
+::-webkit-scrollbar-track-piece {
+  background-color: rgb(144, 210, 254);
+}
+::-webkit-scrollbar-thumb:vertical {
+  background-color: rgb(235, 220, 255);
+  border-radius: 1rem;
+  height: 6px;
+  border: 0.3rem solid rgba(0, 0, 0, 0);
+  background-clip: padding-box;
+  -webkit-border-radius: 1rem;
+}
 .doc--card_container {
   text-align: left;
   overflow-y: scroll;
   height: 100%;
-  padding: 0rem 0.7rem;
+  margin-left: 1rem;
+  background: none;
 }
 
 .doc--patient_card {
