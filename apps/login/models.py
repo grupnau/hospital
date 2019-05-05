@@ -67,6 +67,10 @@ class UserManager(models.Manager):
             return errors
         return user
 
+    @staticmethod
+    def get_patients(doc):
+        return doc.patients.all()
+
 
 class User(models.Model):
     first_name = models.CharField(max_length=255)
@@ -84,7 +88,6 @@ class User(models.Model):
 class Doctor(User):
     years_experience = models.IntegerField(default=0)
     specialty = models.CharField(max_length=255)
-    patients = models.ForeignKey
 
     objects = UserManager()
 

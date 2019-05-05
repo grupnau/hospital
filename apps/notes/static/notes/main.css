@@ -5,6 +5,9 @@ body {
   min-height: 100vh !important;
   background-color: rgba(40, 230, 195, 0.625) !important;
 }
+/* .no_display {
+  display: none;
+} */
 
 .main--container {
   background-color: rgb(144, 210, 254);
@@ -24,13 +27,13 @@ body {
   padding: 0.5rem 1rem;
   width: 40%;
   border-bottom: 0.5rem solid rgb(86, 49, 170) !important;
-  /* border-radius: 1rem; */
 }
 
 .main--button {
-  margin: 0rem 1rem;
+  margin: 0rem;
   border-color: rgb(86, 49, 170) !important;
   background: rgb(86, 49, 170) !important;
+  padding: 0 1rem;
 }
 
 .main--button:hover {
@@ -66,14 +69,14 @@ body {
   justify-content: space-between;
   width: 95%;
   margin: auto;
-  height: 80%;
+  height: 95%;
 }
 
 .main--notes_container {
   text-align: left;
 }
 
-.main--info_container {
+.main--tile_container {
   width: 50%;
   padding: 0.2rem 2rem 1rem;
 }
@@ -85,32 +88,84 @@ body {
     0 -9px 0px 0px rgb(144, 210, 254), 12px 0 15px -8px rgba(31, 73, 125, 0.8),
     -12px 0 15px -8px rgba(31, 73, 125, 0.8);
 }
-.main--user_info_container {
+.main--card_container_outer_rev {
+  height: 88%;
+  padding: 0.6rem 0rem;
+  margin-top: 0.5rem;
+  box-shadow: 0 9px 0px 0px rgb(144, 210, 254),
+    0 -9px 0px 0px rgb(144, 210, 254), 12px 0 15px -8px rgba(31, 73, 125, 0.8),
+    -12px 0 15px -8px rgba(31, 73, 125, 0.8);
+}
+.main--patient_notes_outer {
+  height: 88%;
+  padding: 0.6rem 0rem;
+  margin-top: 0.5rem;
+}
+.main--patient_card {
+  padding: 1rem;
+  background: rgb(235, 220, 255);
+}
+.main--patient_card_head {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 0.2rem solid rgb(86, 49, 170) !important;
+}
+.main--patient_notes_outer_rev {
+  height: 88%;
+  padding: 0.6rem 0rem;
+  margin-top: 0.5rem;
+}
+.main--patient_card_rev {
+  padding: 0rem 1rem 1rem 0rem;
+  background: rgb(144, 210, 254);
+}
+.main--patient_card_head_rev {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 0.2rem solid rgb(86, 49, 170) !important;
+}
+.main--card_container {
   text-align: left;
-  border: 0.1rem solid black;
-  border-radius: 0.5rem;
+  overflow-y: scroll;
+  height: 100%;
+  margin-left: 1rem;
+}
+.main--tile_info_container {
+  text-align: left;
   padding: 1rem;
   outline: none;
   background: rgb(235, 220, 255);
+  height: 100%;
 }
-.main--user_info_head {
+.main--tile_info_head {
   font-size: 1.5rem;
   margin-bottom: 1rem;
   border-bottom: 0.2rem solid rgb(86, 49, 170) !important;
 }
-.main--user_info_content {
+.main--tile_info_content {
   font-size: 1rem;
 }
-.main--card_first_last {
+.main--card_border_wrapper {
   margin: 0.5rem 0rem;
 }
-.main--card_first_last:first-child {
+.main--card_border_wrapper:first-child {
   margin-top: 0rem;
   border-top: 0.2rem dotted rgb(235, 220, 255);
 }
-.main--card_first_last:last-child {
+.main--card_border_wrapper:last-child {
   margin-bottom: 0rem;
   border-bottom: 0.2rem dotted rgb(235, 220, 255);
+}
+.main--card_border_wrapper_rev {
+  margin: 0.5rem 0rem;
+}
+.main--card_border_wrapper_rev:first-child {
+  margin-top: 0rem;
+  border-top: 0.2rem dotted rgb(144, 210, 254);
+}
+.main--card_border_wrapper_rev:last-child {
+  margin-bottom: 0rem;
+  border-bottom: 0.2rem dotted rgb(144, 210, 254);
 }
 .main--float_head {
   padding: 1rem 0rem;
@@ -134,6 +189,32 @@ body {
   text-align: right;
   width: 67%;
   margin: 1rem auto;
+}
+
+.main--card_container::-webkit-scrollbar {
+  width: 1rem;
+}
+.main--card_container::-webkit-scrollbar-track-piece {
+  background-color: rgb(144, 210, 254);
+}
+.main--card_container::-webkit-scrollbar-thumb:vertical {
+  background-color: rgb(235, 220, 255);
+  border-right: 0rem;
+  border-left: 0.6rem solid rgba(0, 0, 0, 0);
+  background-clip: padding-box;
+}
+
+.main--card_container_rev::-webkit-scrollbar {
+  width: 1rem;
+}
+.main--card_container_rev::-webkit-scrollbar-track-piece {
+  background-color: rgb(144, 210, 254);
+}
+.main--card_container_rev::-webkit-scrollbar-thumb:vertical {
+  background-color: rgb(235, 220, 255);
+  border-right: 0rem;
+  border-left: 0.6rem solid rgba(0, 0, 0, 0);
+  background-clip: padding-box;
 }
 
 p.home_logout {
@@ -183,3 +264,24 @@ td input:focus {
   margin: auto;
   border: none;
 } */
+
+span {
+  display: none;
+}
+
+.main--num_container {
+  display: inline-block;
+  width: 10%;
+}
+
+.main--num {
+  display: inline-block;
+  padding: 0.2rem 0rem 0.2rem;
+  box-shadow: inset 0 0 0px 0px rgb(144, 210, 254),
+    0 0px 0px 0px rgb(144, 210, 254), 2px 7px 7px -8px rgba(31, 73, 125, 0.8),
+    10px 2px 7px -8px rgba(31, 73, 125, 0.8);
+  border-radius: 50%;
+  width: 100%;
+  font-size: 0.5rem;
+  text-align: center;
+}
