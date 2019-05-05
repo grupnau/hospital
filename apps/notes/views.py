@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-# import json
+# from django.forms.models import model_to_dict
+from django.http import JsonResponse
+from django.views.decorators.csrf import requires_csrf_token
 from django.core import serializers
-from django.forms.models import model_to_dict
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render
 from django.contrib import messages
 from .models import Note
 from ..login.models import Doctor, Patient
@@ -11,111 +12,52 @@ from ..login.models import Doctor, Patient
 
 def index(request):
     user_type = request.path.split('/')[1]
-    print(user_type)
+
     if user_type == 'doctor':
         doc = Doctor.objects.get(id=request.session['doctor_id'])
-        patients = Patient.objects.all()
-        path = "notes/doc.html"
+        patients = Doctor.objects.get_patients(doc)
+        path = "notes/doctor.html"
         context = {
             'patients': patients,
             'doctor': doc
         }
     else:
         patient = Patient.objects.get(id=request.session['patient_id'])
+        notes = Note.objects.show_all(patient)
         related_doctor = Doctor.objects.get(id=patient.doctor.id)
-        path = "notes/pat.html"
+        path = "notes/patient.html"
         context = {
             'doctor': related_doctor,
-            'patient': patient}
+            'patient': patient,
+            'notes': notes
+        }
 
     return render(request, path, context)
 
 
-def init_notes(request):
-    return all_notes_json(request)
+def show_patient(request):
+    this_patient = Patient.objects.filter(
+        id=request.POST['patient_id']).first()
+    this_doctor = Doctor.objects.filter(
+        id=request.POST['doctor_id']).first()
+
+    return JsonResponse(serializers.serialize("json", [this_patient, this_doctor]), safe=False)
 
 
-def init_faves(request):
-    return all_faves(request)
+def show_patient_notes(request):
+    this_patient = Patient.objects.filter(
+        id=request.POST['patient_id']).first()
+    notes = Note.objects.show_all(this_patient)
+
+    return JsonResponse(serializers.serialize("json", notes), safe=False)
 
 
-def init_patient(request):
-    return patient_tag(request)
-
-
+@requires_csrf_token
 def create(request):
-    # validate requests
-    print("views print")
-    print(request.POST)
-    errs = Note.objects.validate_note(request.POST)
-    if errs:
-        for e in errs:
-            messages.error(request, e)
+    errors = Note.objects.validate_note(request.POST)
+    if errors:
+        for err in errors:
+            messages.error(request, err)
     else:
-        note_id = Note.objects.create_note(
-            request.POST, request.session['patient_id']).id
-    return all_notes_json(request)
-
-
-def favorite(request, note_id):
-    this_patient = Patient.objects.get(id=request.session['patient_id'])
-    this_note = Note.objects.get(id=note_id)
-    this_note.patients.add(this_patient)
-    # print this_patient
-    # print this_note
-    # print this_note.patients.all()
-    return fav_notes_json(request, note_id)
-
-
-def refresh(request):
-    return all_notes_json(request)
-
-
-def remove(request, note_id):
-    patient_removing = Patient.objects.get(id=request.session['patient_id'])
-    note_to_remove = Note.objects.get(id=note_id)
-    note_to_remove.patients.remove(patient_removing)
-    return fav_notes_json(request, note_id)
-
-
-def all_notes_json(request):
-    this_patient = Patient.objects.get(id=request.session['patient_id'])
-    # print this_patient.faves.all()
-    all_faves = []
-    for fav in this_patient.faves.all():
-        all_faves.append(fav.content)
-    # print all_faves
-    all_notes = Note.objects.exclude(content__in=all_faves)
-
-    return HttpResponse(serializers.serialize("json", all_notes),
-                        content_type="application/json")
-
-
-def fav_notes_json(request, note_id):
-    # this_note = Note.objects.get(id=note_id)
-    this_patient = Patient.objects.get(id=request.session['patient_id'])
-    # print this_patient.first_name
-    favorite_notes = this_patient.faves.all()
-    # print favorite_notes
-
-    return HttpResponse(serializers.serialize("json", favorite_notes),
-                        content_type="application/json")
-
-
-def all_faves(request):
-    this_patient = Patient.objects.get(id=request.session['patient_id'])
-    # print this_patient.first_name
-    favorite_notes = this_patient.faves.all()
-    # print favorite_notes
-
-    return HttpResponse(serializers.serialize("json", favorite_notes),
-                        content_type="application/json")
-
-
-def patient_tag(request):
-    this_patient = Patient.objects.get(id=request.session['patient_id'])
-    patient_info = []
-    patient_info.append(this_patient.id)
-    patient_info.append(this_patient.first_name)
-    # print patient_info
-    return HttpResponse(patient_info)
+        Note.objects.create_note(request.POST)
+    return show_patient(request)

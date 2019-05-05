@@ -1,0 +1,319 @@
+html {
+  height: 100vh;
+}
+body {
+  min-height: 100vh !important;
+  background-color: rgba(40, 230, 195, 0.625) !important;
+}
+
+.main--container {
+  background-color: rgb(144, 210, 254);
+  border: 0.1rem solid black;
+  border-radius: 0.5rem;
+  width: 90%;
+  margin: auto;
+  margin-top: 4rem !important;
+  padding: 1rem 0rem;
+  text-align: center;
+  height: 80vh;
+}
+.main--header {
+  text-align: left;
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  width: 40%;
+  border-bottom: 0.5rem solid rgb(86, 49, 170) !important;
+}
+
+.main--button {
+  margin: 0rem;
+  border-color: rgb(86, 49, 170) !important;
+  background: rgb(86, 49, 170) !important;
+  padding: 0 1rem;
+}
+
+.main--button:hover {
+  border-color: rgb(158, 120, 255) !important;
+  background: rgb(158, 120, 255) !important;
+  color: black !important;
+}
+
+.main--title_container {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: rgb(144, 210, 254);
+  border-bottom: 0.2rem solid rgb(86, 49, 170) !important;
+}
+
+.main--welcome {
+  display: inline-block;
+}
+
+.main--logout_button {
+  outline: none;
+  display: inline-block;
+  font-size: 1.2rem;
+  padding: 0rem 2rem !important;
+  margin: 0.5rem 0rem;
+  border-radius: 2rem;
+  height: 2rem;
+}
+
+.main--content_container {
+  display: flex;
+  justify-content: space-between;
+  width: 95%;
+  margin: auto;
+  height: 95%;
+}
+
+.main--notes_container {
+  text-align: left;
+}
+
+.main--tile_container {
+  height: 100%;
+  width: 50%;
+  padding: 0.2rem 2rem 1rem;
+}
+.main--selected_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: left;
+  margin: 0rem 1rem;
+  height: 100%;
+}
+.main--selected_wrap {
+  height: 100%;
+}
+.main--card_container_outer {
+  height: 88%;
+  padding: 0.6rem 0rem;
+  margin-top: 0.5rem;
+  box-shadow: 0 9px 0px 0px rgb(144, 210, 254),
+    0 -9px 0px 0px rgb(144, 210, 254), 12px 0 15px -8px rgba(31, 73, 125, 0.8),
+    -12px 0 15px -8px rgba(31, 73, 125, 0.8);
+}
+.main--card_container_outer_rev {
+  height: 88%;
+  padding: 0.6rem 0rem;
+  margin-top: 0.5rem;
+  box-shadow: 0 9px 0px 0px rgb(144, 210, 254),
+    0 -9px 0px 0px rgb(144, 210, 254), 12px 0 15px -8px rgba(31, 73, 125, 0.8),
+    -12px 0 15px -8px rgba(31, 73, 125, 0.8);
+}
+.main--patient_notes_outer {
+  height: 94%;
+}
+.main--user_card {
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 1rem;
+  background: rgb(235, 220, 255);
+}
+.main--user_card_head {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 0.2rem solid rgb(86, 49, 170) !important;
+}
+.main--patient_notes_outer_rev {
+  height: 88%;
+  padding: 0.6rem 0rem;
+  margin-top: 0.5rem;
+}
+.main--user_card_rev {
+  padding: 0rem 0rem 0.5rem;
+  background: rgb(144, 210, 254);
+}
+.main--user_card_head_rev {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 0.2rem solid rgb(86, 49, 170) !important;
+}
+.main--card_container {
+  text-align: left;
+  overflow-y: scroll;
+  height: 100%;
+  margin-left: 1rem;
+}
+.main--card_container_rev {
+  text-align: left;
+  overflow-y: scroll;
+  height: 100%;
+  margin-left: 0.5rem;
+}
+.main--tile_info_container {
+  text-align: left;
+  padding: 1rem;
+  outline: none;
+  background: rgb(235, 220, 255);
+  height: 70%;
+}
+.main--tile_info_head {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 0.2rem solid rgb(86, 49, 170) !important;
+}
+.main--tile_info_content {
+  height: 90%;
+  font-size: 1rem;
+}
+.main--card_border_wrapper {
+  margin: 0.5rem 0rem;
+}
+.main--card_border_wrapper:first-child {
+  margin-top: 0rem;
+  border-top: 0.2rem dotted rgb(235, 220, 255);
+}
+.main--card_border_wrapper:last-child {
+  margin-bottom: 0rem;
+  border-bottom: 0.2rem dotted rgb(235, 220, 255);
+}
+.main--card_border_wrapper_rev {
+  margin: 0.5rem 0rem;
+}
+.main--card_border_wrapper_rev:first-child {
+  margin-top: 0rem;
+  border-top: 0.2rem dotted rgb(144, 210, 254);
+}
+.main--card_border_wrapper_rev:last-child {
+  margin-bottom: 0rem;
+  border-bottom: 0.2rem dotted rgb(144, 210, 254);
+}
+.main--float_head {
+  padding: 1rem 0rem;
+  box-shadow: inset 0 9px 0px 0px rgb(144, 210, 254),
+    0 -9px 0px 0px rgb(144, 210, 254), 0 12px 12px -10px rgba(31, 73, 125, 0.8);
+  display: inline-block;
+  border-radius: 50%;
+  width: 70%;
+}
+
+.main--form_register {
+  display: inline-block;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+.main--form_login {
+  height: 12rem;
+}
+
+.main--button_container {
+  text-align: right;
+  width: 67%;
+  margin: 1rem auto;
+}
+
+.main--card_container::-webkit-scrollbar {
+  width: 1rem;
+}
+.main--card_container::-webkit-scrollbar-track-piece {
+  background-color: rgb(144, 210, 254);
+}
+.main--card_container::-webkit-scrollbar-thumb:vertical {
+  background-color: rgb(235, 220, 255);
+  border-right: 0rem;
+  border-left: 0.6rem solid rgba(0, 0, 0, 0);
+  background-clip: padding-box;
+}
+
+.main--card_container_rev::-webkit-scrollbar {
+  width: 0.5rem;
+}
+.main--card_container_rev::-webkit-scrollbar-track-piece {
+  background-color: rgb(235, 220, 255);
+}
+.main--card_container_rev::-webkit-scrollbar-thumb:vertical {
+  background-color: rgb(144, 210, 254);
+  border-right: 0rem;
+  border-left: 0.25rem solid rgba(0, 0, 0, 0);
+  background-clip: padding-box;
+}
+
+p.home_logout {
+  display: block;
+  text-align: right;
+}
+
+h4 a {
+  font-size: 14px;
+}
+.error {
+  font-style: italic;
+  font-weight: bold;
+}
+header {
+  text-align: right;
+}
+
+.messages {
+  width: 300px;
+  min-height: 10px;
+  font-style: italic;
+  font-weight: bold;
+}
+
+td {
+  width: 180px;
+  text-align: left;
+}
+td input {
+  margin: 0.2rem;
+  width: 166.22px;
+  border: 0.1rem solid black;
+  border-radius: 0.5rem;
+  padding: 0.2rem;
+  outline: none;
+  background: rgb(235, 220, 255);
+}
+td input:focus {
+  border: 0.1rem solid rgb(86, 49, 170);
+}
+.success {
+  color: green;
+}
+/* .login_body {
+  width: 970px;
+  margin: auto;
+  border: none;
+} */
+
+span {
+  display: none;
+}
+
+.main--num_container {
+  display: inline-block;
+  width: 1rem;
+  height: 0.5rem;
+}
+
+.main--num {
+  background-color: rgb(235, 220, 255);
+  display: inline-block;
+  padding: 0rem 0rem 0rem;
+  box-shadow: 0 0 5px rgb(235, 220, 255), 0 0 5px rgb(235, 220, 255);
+  border-radius: 50%;
+  width: 100%;
+  font-size: 0.7rem;
+  text-align: center;
+  margin-left: 0.4rem;
+}
+
+.main--note_content {
+  background-color: rgb(235, 220, 255);
+  box-shadow: 0 0 6px rgb(235, 220, 255), 0 0 6px rgb(235, 220, 255);
+  border-radius: 0.5rem;
+  margin: 0.5rem 1rem 0.5rem;
+  padding: 0.5rem;
+  font-size: 0.75rem;
+}
+.main--note_date {
+  margin: 0rem;
+  padding-right: 0.5rem;
+  text-align: right;
+  font-size: 0.7rem;
+  font-style: italic;
+}

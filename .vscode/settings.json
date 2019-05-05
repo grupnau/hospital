@@ -1,4 +1,4 @@
 {
   "git.ignoreLimitWarning": true,
-  "python.pythonPath": "hospital_env\\Scripts\\python.exe"
+  "python.pythonPath": "/usr/local/bin/python3"
 }

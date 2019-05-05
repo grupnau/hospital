@@ -8,22 +8,28 @@ class NoteManager(models.Manager):
     @staticmethod
     def validate_note(post_data):
         errors = []
-
-        if len(post_data['noted_by']) < 3:
-            errors.append('Name of doctor must be at least 3 characters long')
+        print(post_data)
         if len(post_data['content']) < 10:
             errors.append('Note must be at least 10 characters long')
         if Note.objects.filter(content=post_data['content']):
             errors.append('This note has already been added')
         return errors
 
-    def create_note(self, clean_data, doctor_id, patient_id):
-
+    def create_note(self, clean_data):
         return self.create(
             content=clean_data['content'],
-            posted_by=Doctor.objects.get(id=doctor_id),
-            patient=Patient.objects.get(id=patient_id)
+            posted_by=Doctor.objects.get(id=clean_data['doctor_id']),
+            patient=Patient.objects.get(id=clean_data['patient_id'])
         )
+
+    @staticmethod
+    def show_all(patient):
+        '''
+        returns a tuple with the zeroeth index containing
+        query for 3 most recent reviews, and the first index
+        containing the rest
+        '''
+        return patient.notes.all().order_by('-created_at')
 
 
 class Note(models.Model):

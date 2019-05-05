@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render, redirect, HttpResponseRedirect, reverse
+from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import Doctor, Patient
 from ..notes.models import Note
@@ -39,7 +39,7 @@ def register(request, user_type):
 
     request.session[id_type] = result.id
     messages.success(request, "Successfully registered!")
-    return HttpResponseRedirect(reverse("notes:index"))
+    return redirect("/" + user_type + "/notes")
 
 
 def login(request, user_type):
@@ -57,7 +57,7 @@ def login(request, user_type):
 
     request.session[id_type] = result.id
     messages.success(request, "Successfully logged in!")
-    return HttpResponseRedirect(reverse(user_type + "/notes:index"))
+    return redirect("/" + user_type + "/notes")
 
 
 def logout(request):

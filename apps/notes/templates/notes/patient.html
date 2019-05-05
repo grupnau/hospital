@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Home</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {% load staticfiles %}
+    <link
+      rel="stylesheet"
+      href="{% static 'notes/pat.css' %}"
+      media="screen"
+      title="no title"
+      charset="utf-8"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'main/bootstrap.css' %}"
+      media="screen"
+      title="no title"
+      charset="utf-8"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'notes/main.css' %}"
+      media="screen"
+      title="no title"
+      charset="utf-8"
+    />
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="{% static 'favicon.ico' %}"
+    />
+    <script
+      type="text/javascript"
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"
+    ></script>
+  </head>
+
+  <body>
+    <header class="main--title_container">
+      <!-- <div class="messages">
+        {% if messages %} {% for message in messages %}
+        <p>{{ message }}</p>
+        {% endfor %} {% endif %}
+      </div> -->
+      <h2 class="main--welcome">Welcome, {{ patient.last_name }}</h2>
+      <a
+        class="btn btn-primary main--button main--logout_button"
+        href="{% url 'login:logout' %}"
+        >Logout</a
+      >
+    </header>
+    <div class="main--container">
+      <div class="main--content_container">
+        <div class="main--tile_container">
+          <h3 class="main--float_head">Notes</h3>
+          <div class="main--card_container_outer">
+            <div class="main--card_container">
+              {% if notes %} {% for note in notes %}
+              <div class="main--card_border_wrapper">
+                <div class="pat--user_card">
+                  <div class="pat--num_container">
+                    <div class="pat--num">
+                      {{ forloop.counter }}
+                    </div>
+                  </div>
+                  <div class="pat--note_container">
+                    <span id="n_id">{{ note.id }}</span>
+                    <span id="p_id">{{ patient.id }}</span>
+                    <span id="d_id">{{ doctor.id }}</span>
+                    <p class="pat--note_content">
+                      {{ note.content }}
+                    </p>
+                    <p class="pat--note_date">{{ note.created_at }}</p>
+                  </div>
+                </div>
+              </div>
+              {% endfor %} {% else %}
+              <p>No notes found.</p>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        <div class="main--tile_container">
+          <h3 class="main--float_head">Doctor</h3>
+          <div class="main--card_container_outer_rev">
+            <div class="main--selected_container">
+              <div
+                style="margin-bottom: 1rem; height: 49%"
+                ,
+                class="main--tile_info_container"
+              >
+                <div
+                  style="margin-bottom: 1.25rem"
+                  class="main--tile_info_head"
+                >
+                  Dr. {{ doctor.last_name }}
+                </div>
+                <div class="pat--user_card_container">
+                  <span id="d_id">{{ doctor.id }}</span>
+                  <p>Email: {{ doctor.email }}</p>
+                  <p>Specialty: {{ doctor.specialty }}</p>
+                  <p>Years in Specialty: {{ doctor.years_experience }}</p>
+                </div>
+              </div>
+              <div style="height: 48%" class="main--tile_info_container">
+                <div class="main--tile_info_head">
+                  My Info
+                </div>
+                <div class="pat--user_card_container">
+                  <span id="d_id">{{ doctor.id }}</span>
+                  <p>Name: {{ patient.first_name }} {{ patient.last_name }}</p>
+                  <p>Email: {{ patient.email }}</p>
+                  <p>Age: {{ patient.age }}</p>
+                  <p>Main Condition: {{ patient.main_condition }}</p>
+                  <p>Date of Birth: {{ patient.dob }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script
+      type="text/javascript"
+      src="{% static 'notes/script.js' %}"
+    ></script>
+  </body>
+</html>
