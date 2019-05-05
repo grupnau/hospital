@@ -46,7 +46,7 @@ $("#selected_patient").on("submit", "#post_note", function(e) {
   $(this)[0].reset();
 });
 
-$("#patient_card").on("click", function() {
+$("#user_card").on("click", function() {
   let user_object = {
     patient_id: $("#p_id")[0].innerText,
     doctor_id: $("#d_id")[0].innerText
@@ -387,7 +387,7 @@ function renderPatient(user_object) {
   notes = user_object.notes;
 
   let el = document.createElement("div");
-  el.setAttribute("class", "doc--selected_patient_container");
+  el.setAttribute("class", "main--selected_container");
   el.style.height = "100%";
 
   let tile_upper = document.createElement("div");
@@ -416,7 +416,7 @@ function renderPatient(user_object) {
       wrapper.setAttribute("class", "main--card_border_wrapper_rev");
 
       let note = document.createElement("div");
-      note.setAttribute("class", "main--patient_card_rev");
+      note.setAttribute("class", "main--user_card_rev");
       note.setAttribute("id", notes[i].pk);
 
       let number_container = document.createElement("div");

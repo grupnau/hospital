@@ -1,7 +1,7 @@
-.doc--selected_patient_wrap {
+.main--selected_wrap {
   height: 100%;
 }
-.doc--selected_patient_container {
+.main--selected_container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;

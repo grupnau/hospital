@@ -6,9 +6,5 @@ urlpatterns = [
     url(r'^$', views.index, name="index"),
     url(r'^show_patient$', views.show_patient),
     url(r'^show_patient_notes$', views.show_patient_notes),
-    url(r'^initialize$', views.init_notes),
-    # url(r'^notes/initialize3$', views.init_user),
     url(r'^create$', views.create, name="create"),
-    url(r'^rm_fm_list/(?P<note_id>\d+)$', views.remove, name="remove"),
-    url(r'^refresh$', views.refresh, name="refresh")
 ]

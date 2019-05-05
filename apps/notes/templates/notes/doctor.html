@@ -14,7 +14,7 @@
     />
     <link
       rel="stylesheet"
-      href="{% static 'notes/bootstrap.css' %}"
+      href="{% static 'main/bootstrap.css' %}"
       media="screen"
       title="no title"
       charset="utf-8"
@@ -25,6 +25,11 @@
       media="screen"
       title="no title"
       charset="utf-8"
+    />
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="{% static 'favicon.ico' %}"
     />
     <script
       type="text/javascript"
@@ -42,12 +47,11 @@
       <h2 class="main--welcome">Welcome, Dr. {{ doctor.last_name }}</h2>
       <a
         class="btn btn-primary main--button main--logout_button"
-        href="{% url 'login:logout' %}"
+        href="{% url 'login:home' %}"
         >Logout</a
       >
     </header>
     <div class="main--container">
-      <!-- <h1 class="main--header">Patient Notes</h1> -->
       <div class="main--content_container">
         <div class="main--tile_container">
           <h3 class="main--float_head">Patients</h3>
@@ -55,14 +59,16 @@
             <div class="main--card_container">
               {% if patients %} {% for patient in patients %}
               <div class="main--card_border_wrapper">
-                <div id="patient_card" class="main--patient_card">
+                <div id="user_card" class="main--user_card">
                   <span id="p_id">{{ patient.id }}</span>
                   <span id="d_id">{{ doctor.id }}</span>
-                  <p class="main--patient_card_head">
+                  <p class="main--user_card_head">
                     {{ patient.first_name }} {{ patient.last_name }}
                   </p>
-                  <p>{{ patient.age }}</p>
-                  <p>{{ patient.main_condition }}</p>
+                  <p>Email: {{ patient.email }}</p>
+                  <p>Age: {{ patient.age }}</p>
+                  <p>Main Condition: {{ patient.main_condition }}</p>
+                  <p>Date of Birth: {{ patient.dob }}</p>
                 </div>
               </div>
               {% endfor %} {% else %}
@@ -72,9 +78,9 @@
           </div>
         </div>
         <div class="main--tile_container">
-          <h3 class="main--float_head">Selected Patient</h3>
+          <h3 class="main--float_head">Current</h3>
           <div class="main--card_container_outer_rev">
-            <div id="selected_patient" class="doc--selected_patient_wrap"></div>
+            <div id="selected_patient" class="main--selected_wrap"></div>
           </div>
         </div>
       </div>

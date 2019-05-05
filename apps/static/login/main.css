@@ -18,12 +18,25 @@ body {
 }
 
 .main--header {
+  display: inline-block;
   text-align: left;
   margin-bottom: 3rem;
   padding: 0.5rem 1rem;
   width: 40%;
   border-bottom: 0.5rem solid rgb(86, 49, 170) !important;
-  /* border-radius: 1rem; */
+}
+.main--header_container {
+  display: flex;
+  justify-content: space-between;
+}
+.main--back_button {
+  outline: none;
+  display: inline-block;
+  font-size: 0.75rem;
+  padding: 0rem 2rem !important;
+  margin: 0.5rem 0rem;
+  border-radius: 2rem;
+  height: 1.25rem;
 }
 
 .main--button {
@@ -41,32 +54,34 @@ body {
 .main--content_container {
   display: flex;
   justify-content: space-between;
-  width: 85%;
+  width: 90%;
   margin: auto;
 }
 
 form {
-  display: inline-block;
+  text-align: left;
   border: 2px solid black;
   border-radius: 10px;
   vertical-align: top;
   padding-left: 10px;
-  width: 45%;
+  width: 48%;
+}
+table {
+  width: 95%;
+}
+
+.main--button_container {
+  text-align: right;
+  width: 100%;
+  padding: 0.5rem 1rem;
 }
 
 .main--form_register {
-  display: inline-block;
   border: 2px solid black;
   border-radius: 10px;
 }
 .main--form_login {
   height: 12rem;
-}
-
-.main--button_container {
-  text-align: right;
-  width: 67%;
-  margin: 1rem auto;
 }
 
 p.home_logout {
@@ -102,20 +117,19 @@ header {
   font-style: italic;
   font-weight: bold;
 }
-
 td {
-  width: 180px;
-  text-align: left;
+  padding: 0rem 0.5rem;
 }
+
 td input,
 select {
   margin: 0.2rem;
-  width: 166.22px;
   border: 0.1rem solid black;
   border-radius: 0.5rem;
   padding: 0.2rem;
   outline: none;
   background: rgb(235, 220, 255);
+  width: 100%;
 }
 td input:focus {
   border: 0.1rem solid rgb(86, 49, 170);

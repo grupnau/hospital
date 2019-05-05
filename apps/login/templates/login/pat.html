@@ -12,7 +12,7 @@
     />
     <link
       rel="stylesheet"
-      href="{% static 'login/bootstrap.css' %}"
+      href="{% static 'main/bootstrap.css' %}"
       media="screen"
       title="no title"
       charset="utf-8"
@@ -37,7 +37,14 @@
     </div>
     {% endif %}
     <div class="main--container">
-      <h1 class="main--header">Register | Login</h1>
+      <div class="main--header_container">
+        <h1 class="main--header">Patient Portal</h1>
+        <a
+          class="btn btn-primary main--button main--back_button"
+          href="{% url 'login:home' %}"
+          >Back</a
+        >
+      </div>
       <div class="main--content_container">
         <form
           class="main--form_register"

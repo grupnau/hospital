@@ -1,0 +1,15 @@
+.doc--note_input {
+  box-shadow: 0 0 8px silver, 0 2px 5px silver;
+  border-radius: 0.5rem;
+}
+.doc--note_input textarea {
+  font-size: 0.75rem;
+}
+.doc--note_input textarea::placeholder {
+  font-weight: 300;
+}
+.doc--note_button_container {
+  display: flex;
+  padding: 0.5rem 0rem;
+  justify-content: flex-end;
+}
