@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import Doctor, Patient
@@ -35,7 +36,7 @@ def register(request, user_type):
     if isinstance(result, list):
         for err in result:
             messages.error(request, err)
-        return redirect('/')
+        return HttpResponseRedirect('/redirect/' + user_type)
 
     request.session[id_type] = result.id
     messages.success(request, "Successfully registered!")
@@ -53,7 +54,7 @@ def login(request, user_type):
     if isinstance(result, list):
         for err in result:
             messages.error(request, err)
-        return redirect('/redirect/' + user_type)
+        return HttpResponseRedirect("/redirect/" + user_type)
 
     request.session[id_type] = result.id
     messages.success(request, "Successfully logged in!")

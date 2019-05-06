@@ -24,18 +24,14 @@
       title="no title"
       charset="utf-8"
     />
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="{% static 'favicon.ico' %}"
+    />
   </head>
 
   <body>
-    {% if messages %}
-    <div class="messages">
-      {% for message in messages %}
-      <p {% if message.tags %} class="{{ message.tags }}" {% endif %}>
-        {{ message }}
-      </p>
-      {% endfor %}
-    </div>
-    {% endif %}
     <div class="main--container">
       <div class="main--header_container">
         <h1 class="main--header">Doctor Portal</h1>
@@ -47,7 +43,7 @@
       </div>
       <div class="main--content_container">
         <form
-          class="main--form_register"
+          class="main--form_container main--form main--form_register"
           action="/register/doctor"
           method="post"
         >
@@ -102,31 +98,46 @@
             </td>
           </p>
         </form>
-        <form class="main--form_login" action="/login/doctor" method="post">
-          {% csrf_token %}
-          <h3>Login</h3>
-          <table>
-            <tr>
-              <td><label for="email">Email:</label></td>
-              <td><input type="text" name="email" /></td>
-            </tr>
-            <tr>
-              <td><label for="password">Password:</label></td>
-              <td><input type="password" name="password" id="password" /></td>
-            </tr>
-          </table>
+        <div class="main--wrap">
+          <form
+            class="main--login_form_container main--form_login"
+            action="/login/doctor"
+            method="post"
+          >
+            {% csrf_token %}
+            <h3>Login</h3>
+            <table>
+              <tr>
+                <td><label for="email">Email:</label></td>
+                <td><input type="text" name="email" /></td>
+              </tr>
+              <tr>
+                <td><label for="password">Password:</label></td>
+                <td><input type="password" name="password" id="password" /></td>
+              </tr>
+            </table>
 
-          <p class="main--button_container">
-            <td>
-              <input
-                class="btn btn-primary main--button"
-                type="submit"
-                name="login"
-                value="Log In"
-              />
-            </td>
-          </p>
-        </form>
+            <p class="main--button_container">
+              <td>
+                <input
+                  class="btn btn-primary main--button"
+                  type="submit"
+                  name="login"
+                  value="Log In"
+                />
+              </td>
+            </p>
+          </form>
+          {% if messages %}
+          <div class="messages">
+            {% for message in messages %}
+            <p {% if message.tags %} class="{{ message.tags }}" {% endif %}>
+              {{ message }}
+            </p>
+            {% endfor %}
+          </div>
+          {% endif %}
+        </div>
       </div>
     </div>
   </body>

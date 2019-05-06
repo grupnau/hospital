@@ -19,13 +19,24 @@ class UserManager(models.Manager):
         elif not str(post_data['first_name']).isalpha() and not str(post_data['last_name']).isalpha():
             errors.append("First and Last name must only contain letters!")
         if not re.match(NAME_REGEX, post_data['first_name']) or not re.match(NAME_REGEX, post_data['last_name']):
-            errors.append("name fields must be letter characters only")
+            errors.append("Name fields must be letter characters only.")
         if not post_data['email'] or not re.match(EMAIL_REGEX, post_data['email']):
-            errors.append("email is not valid")
+            errors.append("Email is not valid.")
         if len(post_data['password']) < 8:
             errors.append("Password must be at least 8 characters.")
         elif post_data['password'] != post_data['confirm_password']:
-            errors.append("passwords don't match")
+            errors.append("Passwords don't match.")
+
+        if user_type == 'doctor':
+            if not post_data['years_experience']:
+                errors.append("Years of experience is mandatory.")
+            if not post_data['specialty']:
+                errors.append("Specialty is mandatory.")
+        if user_type == 'patient':
+            if not post_data['main_condition']:
+                errors.append("Main condition is mandatory.")
+            if not post_data['age']:
+                errors.append("Age is mandatory.")
 
         if not errors:
             first_name = post_data['first_name']
@@ -59,9 +70,9 @@ class UserManager(models.Manager):
         if self.filter(email=post_data['email']):
             user = self.filter(email=post_data['email'])[0]
             if not bcrypt.checkpw(post_data['password'].encode('utf-8'), user.password.encode('utf-8')):
-                errors.append("username or password is incorrect")
+                errors.append("Username or password is incorrect.")
         else:
-            errors.append("username or password is incorrect")
+            errors.append("Username or password is incorrect.")
 
         if errors:
             return errors

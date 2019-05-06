@@ -3,16 +3,16 @@ html {
 }
 body {
   min-height: 100vh !important;
-  background-color: rgba(40, 230, 195, 0.625) !important;
+  background-color: rgba(133, 255, 233, 0.94) !important;
 }
 
 .main--container {
   background-color: rgb(105, 195, 255);
   border: 0.1rem solid black;
   border-radius: 0.5rem;
-  width: 80%;
+  width: 85%;
   margin: auto;
-  margin-top: 12rem !important;
+  margin-top: 8rem !important;
   padding: 1rem 0rem;
   text-align: center;
 }
@@ -58,7 +58,7 @@ body {
   margin: auto;
 }
 
-form {
+.main--form_container {
   text-align: left;
   border: 2px solid black;
   border-radius: 10px;
@@ -66,6 +66,18 @@ form {
   padding-left: 10px;
   width: 48%;
 }
+.main--wrap {
+  width: 50%;
+}
+.main--login_form_container {
+  text-align: left;
+  border: 2px solid black;
+  border-radius: 10px;
+  vertical-align: top;
+  padding-left: 10px;
+  width: 100%;
+}
+
 table {
   width: 95%;
 }
@@ -80,7 +92,7 @@ table {
   border: 2px solid black;
   border-radius: 10px;
 }
-.main--form_login {
+.main--login_container {
   height: 12rem;
 }
 
@@ -114,8 +126,10 @@ header {
 .messages {
   width: 300px;
   min-height: 10px;
+  margin-top: 2rem;
   font-style: italic;
   font-weight: bold;
+  color: rgb(152, 18, 18);
 }
 td {
   padding: 0rem 0.5rem;
@@ -137,8 +151,3 @@ td input:focus {
 .success {
   color: green;
 }
-/* .login_body {
-  width: 970px;
-  margin: auto;
-  border: none;
-} */
